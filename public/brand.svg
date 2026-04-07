@@ -1,7 +1,12 @@
 <svg xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <symbol id="brand" viewBox="0 0 280 80">
-      <text fill="currentColor" font-family="system-ui,-apple-system,sans-serif" font-weight="700" font-size="80" y="68" letter-spacing="-3">MingZ</text>
+    <symbol id="brand" viewBox="0 0 225 82">
+      <!-- M (angular peaks) + i (diamond dot) + n (geometric arch) + Z (bold diagonal) -->
+      <path fill="currentColor" d="M0,68 V0 L28,30 L56,0 V68 H46 V14 L28,38 L10,14 V68 Z M68,4 L74,13 L68,22 L62,13 Z M64,27 H72 V68 H64 Z M80,68 V27 H118 V68 H110 V35 H88 V68 Z M172,0 H222 V10 L184,58 H222 V68 H172 V58 L210,10 H172 Z"/>
+      <!-- g (even-odd for bowl cutout + descender) -->
+      <path fill="currentColor" fill-rule="evenodd" d="M126,27 H162 V78 H126 V70 H154 V60 H126 Z M134,35 H154 V52 H134 Z"/>
+      <!-- Accent underline under M -->
+      <line x1="3" y1="75" x2="53" y2="75" stroke="currentColor" stroke-width="2" stroke-linecap="round" opacity="0.15"/>
     </symbol>
   </defs>
 </svg>
