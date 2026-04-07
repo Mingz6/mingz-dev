@@ -5,8 +5,8 @@
 :root {
   --copy-btn-margin: 10px;
   --accent-1: 99 102 241;   /* indigo-500 */
-  --accent-2: 139 92 246;   /* violet-500 */
-  --accent-3: 236 72 153;   /* pink-500 */
+  --accent-2: 129 140 248;  /* indigo-400 */
+  --accent-3: 34 211 238;   /* cyan-400 */
 }
 
 @layer base {
