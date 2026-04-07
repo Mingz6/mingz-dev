@@ -22,9 +22,17 @@ export default {
         "225": "225deg",
         "315": "315deg",
       },
+      colors: {
+        accent: {
+          1: "rgb(var(--accent-1) / <alpha-value>)",
+          2: "rgb(var(--accent-2) / <alpha-value>)",
+          3: "rgb(var(--accent-3) / <alpha-value>)",
+        },
+      },
       animation: {
         twinkle: "twinkle 2s ease-in-out forwards",
         meteor: "meteor 3s ease-in-out forwards",
+        float: "float 6s ease-in-out infinite",
       },
       keyframes: {
         twinkle: {
@@ -53,6 +61,10 @@ export default {
             opacity: 0, 
             transform: "translateY(0)" 
           },
+        },
+        float: {
+          "0%, 100%": { transform: "translateY(0)" },
+          "50%": { transform: "translateY(-10px)" },
         },
       },
     },

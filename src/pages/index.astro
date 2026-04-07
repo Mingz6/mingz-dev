@@ -65,9 +65,9 @@ const stack = [
   <!-- HERO -->
   <section class="relative h-screen w-full">
     <div id="planetcont" class='animate absolute inset-0 top-1/4 overflow-hidden'>
-      <div id="crescent" class='absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[100vh] aspect-square rounded-full p-[1px] bg-gradient-to-b from-black/25 dark:from-white/75 from-0% to-transparent to-5%'>
+      <div id="crescent" class='absolute top-0 left-1/2 -translate-x-1/2 w-[250vw] min-h-[100vh] aspect-square rounded-full p-[1px] bg-gradient-to-b from-accent-1/40 dark:from-accent-2/60 from-0% to-transparent to-5%'>
         <div id="planet" class='w-full h-full bg-white dark:bg-black rounded-full p-[1px] overflow-hidden flex justify-center'>
-          <div id="blur" class='w-full h-20 rounded-full bg-neutral-900/25 dark:bg-white/25 blur-3xl'/>
+          <div id="blur" class='w-full h-20 rounded-full bg-accent-1/15 dark:bg-accent-2/25 blur-3xl'/>
         </div>
       </div>
     </div>
@@ -77,17 +77,17 @@ const stack = [
           <p class='animated text-lg md:text-xl lg:text-2xl font-semibold opacity-75'>
             Hey, I'm
           </p>
-          <p class='animated text-2xl md:text-3xl lg:text-4xl font-bold uppercase text-black dark:text-white'>
+          <p class='animated text-4xl md:text-5xl lg:text-6xl font-bold uppercase gradient-text'>
             MingZ
           </p>
-          <p class='animated text-sm md:text-base lg:text-lg opacity-75'>
+          <p class='animated text-sm md:text-base lg:text-lg opacity-75 mt-2'>
             Building bots, AI tools, and smart home automation.
           </p>
           <div id="ctaButtons" class='animated flex flex-wrap gap-4 justify-center mt-5'>
-            <a href='/projects' class='py-2 px-4 rounded truncate text-xs md:text-sm lg:text-base bg-black dark:bg-white text-white dark:text-black hover:opacity-75 blend'>
-              See my projects
+            <a href='/projects' class='btn-gradient py-2 px-5 rounded-full truncate text-xs md:text-sm lg:text-base'>
+              <span>See my projects</span>
             </a>
-            <a href='/blog' class='py-2 px-4 truncate rounded text-xs md:text-sm lg:text-base border border-black/25 dark:border-white/25 hover:bg-black/5 hover:dark:bg-white/15 blend'>
+            <a href='/blog' class='py-2 px-5 truncate rounded-full text-xs md:text-sm lg:text-base border border-accent-1/30 dark:border-accent-1/40 hover:bg-accent-1/5 hover:dark:bg-accent-1/10 text-black dark:text-white blend'>
               Read the blog
             </a>
           </div>
@@ -115,8 +115,8 @@ const stack = [
             <p class="font-semibold text-black dark:text-white">
               Recent posts
             </p>
-            <a href="/blog" class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
-              <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
+            <a href="/blog" class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-accent-1 dark:hover:decoration-accent-2 text-black dark:text-white underline-offset-2 blend">
+              <span class="text-black/75 dark:text-white/75 group-hover:text-accent-1 group-hover:dark:text-accent-2 blend">
                 All posts
               </span>
             </a>
@@ -164,19 +164,19 @@ const stack = [
             <p class="font-semibold text-black dark:text-white">
               Recent projects
             </p>
-            <a href="/projects" class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-black dark:hover:decoration-white text-black dark:text-white underline-offset-2 blend">
-              <span class="text-black/75 dark:text-white/75 group-hover:text-black group-hover:dark:text-white blend">
+            <a href="/projects" class="w-fit col-span-3 group flex gap-1 items-center underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-accent-1 dark:hover:decoration-accent-2 text-black dark:text-white underline-offset-2 blend">
+              <span class="text-black/75 dark:text-white/75 group-hover:text-accent-1 group-hover:dark:text-accent-2 blend">
                 All projects
               </span>
             </a>
           </div>
-          <ul class="space-y-4">
-            {projects.map((project) => (
-              <li>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            {projects.map((project, i) => (
+              <div class={i === 0 ? "md:col-span-2" : ""}>
                 <ArrowCard entry={project} />
-              </li>
+              </div>
             ))}
-          </ul>
+          </div>
         </div>
       </section>
 
