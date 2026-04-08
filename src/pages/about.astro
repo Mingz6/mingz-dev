@@ -1,0 +1,91 @@
+---
+import { getCollection } from "astro:content"
+import PageLayout from "@layouts/PageLayout.astro"
+import TopLayout from "@layouts/TopLayout.astro"
+import BottomLayout from "@layouts/BottomLayout.astro"
+import ArrowCard from "@components/ArrowCard"
+import { SOCIALS } from "@consts"
+
+const featured = ["neuro-ming"]
+const projects = (await getCollection("projects"))
+  .filter(p => !p.data.draft && featured.includes(p.slug))
+---
+
+<PageLayout title="About" description="A bit about MingZ — developer, tinkerer, builder of things.">
+  <TopLayout>
+    <div class="animate">
+      <h1 class="text-3xl font-semibold text-black dark:text-white mt-2">
+        About
+      </h1>
+    </div>
+  </TopLayout>
+  <BottomLayout>
+    <div class="animate">
+      <div class="flex flex-col md:flex-row gap-8 md:gap-12 items-start">
+
+        <!-- Avatar -->
+        <div class="shrink-0 self-center md:self-start">
+          <div class="w-36 h-36 rounded-full bg-gradient-to-br from-accent-1/80 to-accent-3/80 flex items-center justify-center text-white text-4xl font-bold select-none">
+            MZ
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div class="space-y-5 text-base leading-relaxed">
+          <p>
+            Hey — I'm <b>MingZ</b>. I'm a full-stack developer based in <b>Edmonton, AB</b>.
+            I build things on evenings and weekends: chatbots, AI assistants, MCP servers,
+            smart home setups, and whatever else catches my attention.
+          </p>
+          <p>
+            My day-to-day stack is <b>.NET</b>, <b>React</b>, <b>Azure</b>, and <b>TypeScript</b>.
+            Lately I've been deep into AI agents, the Model Context Protocol, and wiring up 
+            Home Assistant with a UniFi network that has more VLANs than it probably needs.
+          </p>
+          <p>
+            I studied at <b>NAIT</b> (Digital Media & IT) and the <b>University of Alberta</b> 
+            (MSc Multimedia). Most of what I actually know came from building stuff and breaking stuff.
+          </p>
+        </div>
+      </div>
+
+      <!-- Currently Building -->
+      <div class="mt-12 space-y-4">
+        <h2 class="text-xl font-semibold text-black dark:text-white">What I'm working on</h2>
+        <div class="space-y-3">
+          {projects.map(project => (
+            <ArrowCard entry={project} />
+          ))}
+        </div>
+      </div>
+
+      <!-- Interests -->
+      <div class="mt-12 space-y-4">
+        <h2 class="text-xl font-semibold text-black dark:text-white">Outside of code</h2>
+        <p>
+          I cook a lot, ski in the winter, and spend too much time tweaking my smart home. 
+          My UniFi dashboard has more uptime than most production systems I've worked on.
+        </p>
+      </div>
+
+      <!-- Links -->
+      <div class="mt-12 space-y-4">
+        <h2 class="text-xl font-semibold text-black dark:text-white">Find me</h2>
+        <div class="flex gap-4">
+          {SOCIALS.map(social => (
+            <a
+              href={social.HREF}
+              target="_blank"
+              rel="noopener noreferrer"
+              class="flex items-center gap-2 px-4 py-2 rounded-full border border-accent-1/30 dark:border-accent-1/40 hover:bg-accent-1/5 hover:dark:bg-accent-1/10 text-black dark:text-white blend"
+            >
+              <span>{social.NAME}</span>
+              <span class="opacity-50">@{social.TEXT}</span>
+            </a>
+          ))}
+        </div>
+      </div>
+
+    </div>
+  </BottomLayout>
+</PageLayout>
