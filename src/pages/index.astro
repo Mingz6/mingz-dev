@@ -5,6 +5,7 @@ import ArrowCard from "@components/ArrowCard"
 import { SITE, SOCIALS } from "@consts"
 import TwinklingStars from "@components/TwinklingStars.astro"
 import MeteorShower from "@components/MeteorShower.astro"
+import updates from "@data/updates.json"
 
 const posts = (await getCollection("blog"))
   .filter(post => !post.data.draft)
@@ -15,6 +16,10 @@ const projects = (await getCollection("projects"))
   .filter(project => !project.data.draft)
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0,3)
+
+const recentUpdates = updates
+  .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
+  .slice(0, 5)
 ---
 
 <PageLayout title="Home" description={SITE.DESCRIPTION}>
@@ -132,6 +137,34 @@ const projects = (await getCollection("projects"))
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      <!-- Build Log Section -->
+      <section class="animate">
+        <div class="space-y-4">
+          <p class="font-semibold text-black dark:text-white">
+            Build log
+          </p>
+          <div class="space-y-3">
+            {recentUpdates.map(update => (
+              <div class="flex gap-4 items-start">
+                <div class="shrink-0 text-xs opacity-50 pt-1 w-20 tabular-nums">
+                  {new Date(update.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
+                </div>
+                <div class="flex-1">
+                  <p class="text-sm">{update.text}</p>
+                  <div class="flex gap-1 mt-1">
+                    {update.tags.map((tag: string) => (
+                      <span class="text-xs px-2 py-0.5 rounded-full bg-accent-1/10 dark:bg-accent-2/20 text-accent-1 dark:text-accent-2">
+                        {tag}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 

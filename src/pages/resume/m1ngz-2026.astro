@@ -1,0 +1,160 @@
+---
+import PageLayout from "@layouts/PageLayout.astro"
+import { SOCIALS } from "@consts"
+---
+
+<PageLayout title="Resume" description="Mingzhi Zhu — Full-Stack Developer">
+  <meta slot="head" name="robots" content="noindex, nofollow" />
+  
+  <div class="pt-36 pb-16">
+    <div class="mx-auto max-w-screen-md px-5">
+      <div class="animate">
+
+        <!-- Header -->
+        <div class="flex flex-col sm:flex-row justify-between items-start gap-4 mb-8">
+          <div>
+            <h1 class="text-3xl font-bold text-black dark:text-white">Mingzhi Zhu</h1>
+            <p class="text-lg opacity-75 mt-1">Full-Stack Developer</p>
+            <p class="text-sm opacity-50 mt-1">Edmonton, AB, Canada</p>
+          </div>
+          <div class="flex gap-3">
+            {SOCIALS.map(social => (
+              <a href={social.HREF} target="_blank" rel="noopener noreferrer" 
+                 class="text-sm underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-accent-1 dark:hover:decoration-accent-2 text-black dark:text-white blend">
+                {social.NAME}
+              </a>
+            ))}
+            <a href="https://mingz.dev" class="text-sm underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-accent-1 dark:hover:decoration-accent-2 text-black dark:text-white blend">
+              mingz.dev
+            </a>
+          </div>
+        </div>
+
+        <!-- Summary -->
+        <section class="mb-8">
+          <h2 class="text-lg font-semibold text-black dark:text-white border-b border-black/10 dark:border-white/10 pb-1 mb-3">Summary</h2>
+          <p class="text-sm leading-relaxed">
+            Full-stack developer with 12+ years building and maintaining enterprise applications, databases, and integrations. 
+            Currently focused on .NET, React, Azure, and AI/ML tooling. Builds side projects spanning chatbots, MCP servers, 
+            smart home automation, and AI agents.
+          </p>
+        </section>
+
+        <!-- Skills -->
+        <section class="mb-8">
+          <h2 class="text-lg font-semibold text-black dark:text-white border-b border-black/10 dark:border-white/10 pb-1 mb-3">Skills</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-2 text-sm">
+            <div><b>Backend:</b> C#, .NET, Dapper, Entity Framework, Python, Node.js</div>
+            <div><b>Frontend:</b> React, TypeScript, Tailwind CSS, HTML/CSS</div>
+            <div><b>Cloud:</b> Azure (SWA, App Service, Functions, DevOps, AI Services)</div>
+            <div><b>Data:</b> SQL Server, T-SQL, SSRS, SQLite</div>
+            <div><b>AI/ML:</b> Azure OpenAI, LLMs, MCP, Computer Vision, NLP</div>
+            <div><b>Tools:</b> Git, GitHub Actions, Nx, Docker, Grafana</div>
+          </div>
+        </section>
+
+        <!-- Experience -->
+        <section class="mb-8">
+          <h2 class="text-lg font-semibold text-black dark:text-white border-b border-black/10 dark:border-white/10 pb-1 mb-3">Experience</h2>
+          
+          <div class="space-y-6">
+            <div>
+              <div class="flex justify-between items-baseline">
+                <h3 class="font-semibold text-black dark:text-white">Consultant — Application Developer</h3>
+                <span class="text-xs opacity-50 shrink-0 ml-4">Mar 2019 – Present</span>
+              </div>
+              <p class="text-sm opacity-75">CGI, Edmonton, AB</p>
+              <ul class="text-sm mt-2 space-y-1 list-disc list-inside opacity-85">
+                <li>Develop and maintain C# applications — system performance, enhancements, mission-critical features</li>
+                <li>Work in agile teams using Microsoft technologies (.NET, Azure, SQL Server)</li>
+                <li>Built and maintain Grafana monitoring dashboards for production systems</li>
+                <li>Collaborate with developers, BAs, and architects on delivery of new applications</li>
+                <li>Develop data reports and investigate data-related issues</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline">
+                <h3 class="font-semibold text-black dark:text-white">Application Analyst</h3>
+                <span class="text-xs opacity-50 shrink-0 ml-4">Nov 2014 – Mar 2019</span>
+              </div>
+              <p class="text-sm opacity-75">Alcanna Inc., Edmonton, AB</p>
+              <ul class="text-sm mt-2 space-y-1 list-disc list-inside opacity-85">
+                <li>Maintained and tested web application modules using ASP.NET MVC, Entity Framework, jQuery</li>
+                <li>Developed stored procedures, SSRS reports, and real-time integration systems (Web API + T-SQL)</li>
+                <li>Designed and maintained Excel macros for ERP system (Dynamics Great Plains)</li>
+                <li>Communicated with business clients and vendor partners for troubleshooting and solution design</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline">
+                <h3 class="font-semibold text-black dark:text-white">System Analyst</h3>
+                <span class="text-xs opacity-50 shrink-0 ml-4">Sep 2013 – Aug 2014</span>
+              </div>
+              <p class="text-sm opacity-75">City of Edmonton, Edmonton, AB</p>
+              <ul class="text-sm mt-2 space-y-1 list-disc list-inside opacity-85">
+                <li>System admin for enterprise financial applications (fines, tickets, cashier systems)</li>
+                <li>Performed QA activities and coordinated application testing</li>
+                <li>Provided IT support and feasibility estimates for customer service requests</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline">
+                <h3 class="font-semibold text-black dark:text-white">Enterprise Application Specialist</h3>
+                <span class="text-xs opacity-50 shrink-0 ml-4">Jan 2012 – Jul 2013</span>
+              </div>
+              <p class="text-sm opacity-75">City of Edmonton, Edmonton, AB</p>
+              <ul class="text-sm mt-2 space-y-1 list-disc list-inside opacity-85">
+                <li>Maintained enterprise applications — SAP, SharePoint, Google Apps, Remedy, iNovah</li>
+                <li>Developed Google Sites using Google Scripts and JavaScript</li>
+                <li>Participated in UAT and application debugging</li>
+              </ul>
+            </div>
+          </div>
+        </section>
+
+        <!-- Education -->
+        <section class="mb-8">
+          <h2 class="text-lg font-semibold text-black dark:text-white border-b border-black/10 dark:border-white/10 pb-1 mb-3">Education</h2>
+          <div class="space-y-3">
+            <div class="flex justify-between items-baseline">
+              <div>
+                <p class="font-semibold text-black dark:text-white text-sm">MSc Computer Science — Multimedia Specialization</p>
+                <p class="text-sm opacity-75">University of Alberta</p>
+              </div>
+              <span class="text-xs opacity-50 shrink-0 ml-4">2021</span>
+            </div>
+            <div class="flex justify-between items-baseline">
+              <div>
+                <p class="font-semibold text-black dark:text-white text-sm">Bachelor of Technology — Technology Management</p>
+                <p class="text-sm opacity-75">NAIT</p>
+              </div>
+              <span class="text-xs opacity-50 shrink-0 ml-4">2017</span>
+            </div>
+            <div class="flex justify-between items-baseline">
+              <div>
+                <p class="font-semibold text-black dark:text-white text-sm">Diploma — Digital Media & IT, Computer Programming</p>
+                <p class="text-sm opacity-75">NAIT</p>
+              </div>
+              <span class="text-xs opacity-50 shrink-0 ml-4">2012</span>
+            </div>
+          </div>
+        </section>
+
+        <!-- Certifications -->
+        <section class="mb-8">
+          <h2 class="text-lg font-semibold text-black dark:text-white border-b border-black/10 dark:border-white/10 pb-1 mb-3">Certifications</h2>
+          <div class="grid grid-cols-1 sm:grid-cols-2 gap-1 text-sm">
+            <div>Azure AI Fundamentals (AI-900)</div>
+            <div>ITIL Foundation Certificate</div>
+            <div>Coursera — Machine Learning</div>
+            <div>Coursera — Deep Learning Specialization</div>
+          </div>
+        </section>
+
+      </div>
+    </div>
+  </div>
+</PageLayout>
