@@ -11,6 +11,8 @@ tags:
 repoUrl: https://github.com/Mingz6/GitHubBot
 ---
 
+<!-- TODO: Retrofit this repo — absorb knowledge, rebuild, move into mingz-dev. Due: June 7, 2026 -->
+
 A Flask web application that searches for GitHub repositories using DuckDuckGo, bypassing GitHub's API rate limits while still returning relevant results.
 
 ## How it works

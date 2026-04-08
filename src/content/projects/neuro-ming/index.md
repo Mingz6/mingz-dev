@@ -10,6 +10,8 @@ tags:
 - TTS
 ---
 
+<!-- TODO: Make repo public or keep private. Add repoUrl when ready. Due: June 7, 2026 -->
+
 An AI assistant with a distinct personality — part chatbot, part VTuber experiment. Has memory, speaks with TTS, and serves a web chat UI.
 
 ## Architecture

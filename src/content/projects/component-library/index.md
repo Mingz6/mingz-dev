@@ -10,6 +10,8 @@ tags:
 - Nx
 ---
 
+<!-- TODO: Migrate from mingz-projects repo into mingz-dev. Add repoUrl back once public. Delete old repo after. Due: June 7, 2026 -->
+
 A shared React component library built inside an Nx monorepo. Components are developed in isolation with Storybook and consumed by the demo site.
 
 ## Components

@@ -11,6 +11,8 @@ tags:
 repoUrl: https://github.com/Mingz6/VamAi
 ---
 
+<!-- TODO: Retrofit this repo — study purpose, update content. Due: June 7, 2026 -->
+
 A collection of AI/ML workshop materials and experiments. Jupyter notebooks covering various machine learning topics.
 
 ## Topics covered
