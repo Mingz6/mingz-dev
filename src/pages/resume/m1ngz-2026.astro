@@ -15,18 +15,22 @@ import { SOCIALS } from "@consts"
           <div>
             <h1 class="text-3xl font-bold text-black dark:text-white">Mingzhi Zhu</h1>
             <p class="text-lg opacity-75 mt-1">Full-Stack Developer</p>
-            <p class="text-sm opacity-50 mt-1">Edmonton, AB, Canada</p>
           </div>
-          <div class="flex gap-3">
-            {SOCIALS.map(social => (
-              <a href={social.HREF} target="_blank" rel="noopener noreferrer" 
-                 class="text-sm underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-accent-1 dark:hover:decoration-accent-2 text-black dark:text-white blend">
-                {social.NAME}
+          <div class="flex flex-col items-end gap-2">
+            <div class="flex gap-3">
+              {SOCIALS.map(social => (
+                <a href={social.HREF} target="_blank" rel="noopener noreferrer" 
+                   class="text-sm underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-accent-1 dark:hover:decoration-accent-2 text-black dark:text-white blend">
+                  {social.NAME}
+                </a>
+              ))}
+              <a href="https://mingz.dev" class="text-sm underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-accent-1 dark:hover:decoration-accent-2 text-black dark:text-white blend">
+                mingz.dev
               </a>
-            ))}
-            <a href="https://mingz.dev" class="text-sm underline decoration-[.5px] decoration-black/25 dark:decoration-white/50 hover:decoration-accent-1 dark:hover:decoration-accent-2 text-black dark:text-white blend">
-              mingz.dev
-            </a>
+            </div>
+            <button onclick="window.print()" class="print:hidden text-xs px-3 py-1 rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/10 text-black dark:text-white blend cursor-pointer">
+              Save as PDF
+            </button>
           </div>
         </div>
 
@@ -60,16 +64,32 @@ import { SOCIALS } from "@consts"
           <div class="space-y-6">
             <div>
               <div class="flex justify-between items-baseline">
-                <h3 class="font-semibold text-black dark:text-white">Consultant — Application Developer</h3>
-                <span class="text-xs opacity-50 shrink-0 ml-4">Mar 2019 – Present</span>
+                <h3 class="font-semibold text-black dark:text-white">Full-Stack Developer</h3>
+                <span class="text-xs opacity-50 shrink-0 ml-4">Sep 2021 – Present</span>
               </div>
-              <p class="text-sm opacity-75">CGI, Edmonton, AB</p>
+              <p class="text-sm opacity-75">College & Association of Registered Nurses of Alberta (CRNA)</p>
               <ul class="text-sm mt-2 space-y-1 list-disc list-inside opacity-85">
-                <li>Develop and maintain C# applications — system performance, enhancements, mission-critical features</li>
-                <li>Work in agile teams using Microsoft technologies (.NET, Azure, SQL Server)</li>
-                <li>Built and maintain Grafana monitoring dashboards for production systems</li>
-                <li>Collaborate with developers, BAs, and architects on delivery of new applications</li>
-                <li>Develop data reports and investigate data-related issues</li>
+                <li>Build and maintain web apps using Nx, React (frontend) and C# Azure Function Apps (backend)</li>
+                <li>Develop Teams tab apps with custom SSO and Copilot solutions for user workflows</li>
+                <li>Run CI/CD with Azure DevOps, GitHub Actions, and Bicep IaC</li>
+                <li>Built Azure AI document intelligence solutions for processing documentation</li>
+                <li>Set up Azure Alerts and monitoring for system stability</li>
+                <li>Maintain SharePoint sites using PnP Framework and Microsoft Graph APIs</li>
+              </ul>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline">
+                <h3 class="font-semibold text-black dark:text-white">Consultant — Application Developer</h3>
+                <span class="text-xs opacity-50 shrink-0 ml-4">Mar 2019 – Sep 2021</span>
+              </div>
+              <p class="text-sm opacity-75">CGI — AB Justice AMS</p>
+              <ul class="text-sm mt-2 space-y-1 list-disc list-inside opacity-85">
+                <li>Developed and maintained C# applications — system performance, enhancements, mission-critical features</li>
+                <li>Worked in agile teams on mission-critical apps using Microsoft technologies</li>
+                <li>Built and maintained Grafana monitoring dashboards for production systems</li>
+                <li>Collaborated with developers, BAs, and architects on new software delivery</li>
+                <li>Developed SSRS data reports and investigated data-related issues</li>
               </ul>
             </div>
 
@@ -78,7 +98,7 @@ import { SOCIALS } from "@consts"
                 <h3 class="font-semibold text-black dark:text-white">Application Analyst</h3>
                 <span class="text-xs opacity-50 shrink-0 ml-4">Nov 2014 – Mar 2019</span>
               </div>
-              <p class="text-sm opacity-75">Alcanna Inc., Edmonton, AB</p>
+              <p class="text-sm opacity-75">Alcanna Inc.</p>
               <ul class="text-sm mt-2 space-y-1 list-disc list-inside opacity-85">
                 <li>Maintained and tested web application modules using ASP.NET MVC, Entity Framework, jQuery</li>
                 <li>Developed stored procedures, SSRS reports, and real-time integration systems (Web API + T-SQL)</li>
@@ -92,7 +112,7 @@ import { SOCIALS } from "@consts"
                 <h3 class="font-semibold text-black dark:text-white">System Analyst</h3>
                 <span class="text-xs opacity-50 shrink-0 ml-4">Sep 2013 – Aug 2014</span>
               </div>
-              <p class="text-sm opacity-75">City of Edmonton, Edmonton, AB</p>
+              <p class="text-sm opacity-75">City of Edmonton</p>
               <ul class="text-sm mt-2 space-y-1 list-disc list-inside opacity-85">
                 <li>System admin for enterprise financial applications (fines, tickets, cashier systems)</li>
                 <li>Performed QA activities and coordinated application testing</li>
@@ -105,7 +125,7 @@ import { SOCIALS } from "@consts"
                 <h3 class="font-semibold text-black dark:text-white">Enterprise Application Specialist</h3>
                 <span class="text-xs opacity-50 shrink-0 ml-4">Jan 2012 – Jul 2013</span>
               </div>
-              <p class="text-sm opacity-75">City of Edmonton, Edmonton, AB</p>
+              <p class="text-sm opacity-75">City of Edmonton</p>
               <ul class="text-sm mt-2 space-y-1 list-disc list-inside opacity-85">
                 <li>Maintained enterprise applications — SAP, SharePoint, Google Apps, Remedy, iNovah</li>
                 <li>Developed Google Sites using Google Scripts and JavaScript</li>
