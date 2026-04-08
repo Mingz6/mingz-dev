@@ -8,7 +8,6 @@ tags:
 - TypeScript
 - Storybook
 - Nx
-repoUrl: https://github.com/Mingz6/mingz-projects
 ---
 
 A shared React component library built inside an Nx monorepo. Components are developed in isolation with Storybook and consumed by the demo site.
