@@ -8,7 +8,6 @@ tags:
 - AI
 - LLM
 - TTS
-repoUrl: https://github.com/Mingz6/neuro-ming
 ---
 
 An AI assistant with a distinct personality — part chatbot, part VTuber experiment. Has memory, speaks with TTS, and serves a web chat UI.
