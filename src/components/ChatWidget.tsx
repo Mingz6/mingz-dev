@@ -1,4 +1,4 @@
-import { createSignal, createEffect, For, Show, onMount } from "solid-js"
+import { createEffect, createSignal, For, Show, onMount } from "solid-js"
 
 interface Message {
   role: "user" | "bot"
@@ -6,13 +6,17 @@ interface Message {
 }
 
 const API_URL = import.meta.env.PUBLIC_CHAT_API_URL || "http://localhost:8000"
+const STORAGE_KEYS = {
+  session: "neuro-ming-session",
+  messages: "neuro-ming-messages",
+  open: "neuro-ming-open",
+}
 
 function getSessionId(): string {
-  const key = "neuro-ming-session"
-  let id = sessionStorage.getItem(key)
+  let id = sessionStorage.getItem(STORAGE_KEYS.session)
   if (!id) {
     id = crypto.randomUUID()
-    sessionStorage.setItem(key, id)
+    sessionStorage.setItem(STORAGE_KEYS.session, id)
   }
   return id
 }
@@ -24,6 +28,25 @@ export default function ChatWidget() {
   const [loading, setLoading] = createSignal(false)
   let messagesEnd: HTMLDivElement | undefined
   let inputRef: HTMLInputElement | undefined
+
+  // Restore state from sessionStorage on mount
+  onMount(() => {
+    const saved = sessionStorage.getItem(STORAGE_KEYS.messages)
+    if (saved) {
+      try { setMessages(JSON.parse(saved)) } catch { /* ignore bad data */ }
+    }
+    setOpen(sessionStorage.getItem(STORAGE_KEYS.open) === "true")
+  })
+
+  // Persist messages whenever they change
+  createEffect(() => {
+    sessionStorage.setItem(STORAGE_KEYS.messages, JSON.stringify(messages()))
+  })
+
+  // Persist open/closed state
+  createEffect(() => {
+    sessionStorage.setItem(STORAGE_KEYS.open, String(open()))
+  })
 
   const scrollToBottom = () => {
     messagesEnd?.scrollIntoView({ behavior: "smooth" })
@@ -78,6 +101,7 @@ export default function ChatWidget() {
       /* ignore */
     }
     setMessages([])
+    sessionStorage.removeItem(STORAGE_KEYS.messages)
   }
 
   const handleKeyDown = (e: KeyboardEvent) => {
