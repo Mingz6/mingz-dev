@@ -3,6 +3,8 @@ title: "Excel Design Services"
 summary: "Freelance-built business website for an Edmonton engineering firm — static HTML/CSS/JS with SEO and responsive design."
 date: "Apr 10 2026"
 draft: false
+demoUrl: "https://mingz6.github.io/exceldesign/"
+repoUrl: "https://github.com/Mingz6/exceldesign"
 tags:
 - HTML
 - CSS
