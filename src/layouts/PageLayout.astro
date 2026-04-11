@@ -29,8 +29,35 @@ import { SITE } from "@consts"
           img.addEventListener("load", () => img.classList.add("loaded"), { once: true })
         })
       }
-      document.addEventListener("astro:after-swap", initBlurUp)
+
+      function initLightbox() {
+        document.querySelectorAll("article img").forEach(img => {
+          img.addEventListener("click", e => {
+            e.stopPropagation()
+            const overlay = document.createElement("div")
+            overlay.className = "lightbox-overlay"
+            const clone = document.createElement("img")
+            clone.src = img.src
+            clone.alt = img.alt
+            overlay.appendChild(clone)
+            document.body.appendChild(overlay)
+            requestAnimationFrame(() => overlay.classList.add("show"))
+
+            function close() {
+              overlay.classList.remove("show")
+              overlay.addEventListener("transitionend", () => overlay.remove(), { once: true })
+            }
+            overlay.addEventListener("click", close)
+            document.addEventListener("keydown", function esc(e) {
+              if (e.key === "Escape") { close(); document.removeEventListener("keydown", esc) }
+            })
+          })
+        })
+      }
+
+      document.addEventListener("astro:after-swap", () => { initBlurUp(); initLightbox() })
       initBlurUp()
+      initLightbox()
     </script>
   </body>
 </html>
