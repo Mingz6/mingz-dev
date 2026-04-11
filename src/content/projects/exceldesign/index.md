@@ -16,6 +16,8 @@ tags:
 
 A multi-page business website I built for Excel Design Services Inc., an engineering firm in Edmonton that does pressure vessel, heat exchanger, and piping design.
 
+Originally built in 2022 as a freelance project, then fully redesigned in 2026 when the client came back for a modern refresh — same client, four years later.
+
 ## What it does
 
 - Five-page responsive site (home, engineering, welding, safety, contact)
