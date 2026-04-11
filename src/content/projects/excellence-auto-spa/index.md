@@ -3,6 +3,8 @@ title: "Excellence Auto Spa"
 summary: "Freelance MVP website for a Vancouver mobile car detailing business — Next.js 16, Tailwind, dark theme with gold accents."
 date: "Apr 01 2026"
 draft: false
+demoUrl: "https://excellence-auto-spa.vercel.app"
+repoUrl: "https://github.com/Mingz6/excellence-auto-spa"
 tags:
 - Next.js
 - React
