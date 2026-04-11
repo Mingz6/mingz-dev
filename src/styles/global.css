@@ -207,8 +207,8 @@ html:not(.dark) .glass {
 }
 
 article img {
-  padding-top: 20px;
-  padding-bottom: 20px;
+  padding-top: 10px;
+  padding-bottom: 10px;
   display: block;
   margin: 0 auto;
 }
@@ -292,7 +292,7 @@ article img {
 /* Print styles for resume page */
 @media print {
   header, footer, nav { display: none !important; }
-  .pt-36, .pt-24 { padding-top: 1rem !important; }
+  .pt-36, .pt-24, .pt-20 { padding-top: 1rem !important; }
   .animate { animation: none !important; opacity: 1 !important; }
   body { color: black !important; background: white !important; }
   * { color: black !important; border-color: #ddd !important; }

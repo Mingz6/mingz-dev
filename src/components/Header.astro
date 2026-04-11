@@ -6,7 +6,7 @@ const subpath = pathname.match(/[^/]+/g)
 import Container from "@components/Container.astro"
 ---
 
-<header id="header" class="fixed top-0 w-full h-16 z-50 ">
+<header id="header" class="fixed top-0 w-full h-16 z-50 transition-transform duration-300 ease-in-out">
   <Container size="lg">
     <div class="relative h-full w-full">
       <div class="absolute left-0 top-1/2 -translate-y-1/2 flex gap-1 font-semibold">
@@ -97,4 +97,27 @@ import Container from "@components/Container.astro"
 
   document.addEventListener("astro:after-swap", initializeDrawerButton)
   initializeDrawerButton()
+
+  // Auto-hide header on scroll down, show on scroll up
+  function initializeHeaderAutoHide() {
+    let lastY = 0
+    const header = document.getElementById("header")
+    if (!header) return
+
+    function onScroll() {
+      const y = window.scrollY
+      if (y > 64 && y > lastY) {
+        header.classList.add("-translate-y-full")
+      } else {
+        header.classList.remove("-translate-y-full")
+      }
+      lastY = y
+    }
+
+    window.removeEventListener("scroll", onScroll)
+    window.addEventListener("scroll", onScroll, { passive: true })
+  }
+
+  document.addEventListener("astro:after-swap", initializeHeaderAutoHide)
+  initializeHeaderAutoHide()
 </script>
