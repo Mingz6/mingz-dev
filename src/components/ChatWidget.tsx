@@ -23,6 +23,7 @@ function getSessionId(): string {
 
 export default function ChatWidget() {
   const [open, setOpen] = createSignal(false)
+  const [maximized, setMaximized] = createSignal(false)
   const [messages, setMessages] = createSignal<Message[]>([])
   const [input, setInput] = createSignal("")
   const [loading, setLoading] = createSignal(false)
@@ -109,6 +110,9 @@ export default function ChatWidget() {
       e.preventDefault()
       sendMessage()
     }
+    if (e.key === "Escape" && maximized()) {
+      setMaximized(false)
+    }
   }
 
   return (
@@ -138,7 +142,20 @@ export default function ChatWidget() {
 
       {/* Chat panel */}
       <Show when={open()}>
-        <div class="fixed bottom-6 right-6 z-50 flex h-[min(520px,80vh)] w-[min(380px,calc(100vw-48px))] flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-2xl dark:border-white/10 dark:bg-neutral-900">
+        {/* Backdrop when maximized */}
+        <Show when={maximized()}>
+          <div
+            class="fixed inset-0 z-40 bg-black/50 backdrop-blur-sm transition-opacity"
+            onClick={() => setMaximized(false)}
+          />
+        </Show>
+        <div
+          class={`fixed z-50 flex flex-col overflow-hidden rounded-2xl border border-black/10 bg-white shadow-2xl transition-all duration-300 dark:border-white/10 dark:bg-neutral-900 ${
+            maximized()
+              ? "inset-4 sm:inset-8 md:inset-12 lg:inset-16"
+              : "bottom-6 right-6 h-[min(520px,80vh)] w-[min(380px,calc(100vw-48px))]"
+          }`}
+        >
           {/* Header */}
           <div class="flex items-center justify-between border-b border-black/10 px-4 py-3 dark:border-white/10">
             <div class="flex items-center gap-2">
@@ -158,7 +175,31 @@ export default function ChatWidget() {
                 🗑️
               </button>
               <button
-                onClick={() => setOpen(false)}
+                onClick={() => setMaximized(!maximized())}
+                aria-label={maximized() ? "Minimize chat" : "Maximize chat"}
+                class="rounded-lg p-1.5 opacity-50 transition-opacity hover:opacity-100"
+                title={maximized() ? "Minimize" : "Maximize"}
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                  {maximized() ? (
+                    <>
+                      <polyline points="4 14 10 14 10 20" />
+                      <polyline points="20 10 14 10 14 4" />
+                      <line x1="14" y1="10" x2="21" y2="3" />
+                      <line x1="3" y1="21" x2="10" y2="14" />
+                    </>
+                  ) : (
+                    <>
+                      <polyline points="15 3 21 3 21 9" />
+                      <polyline points="9 21 3 21 3 15" />
+                      <line x1="21" y1="3" x2="14" y2="10" />
+                      <line x1="3" y1="21" x2="10" y2="14" />
+                    </>
+                  )}
+                </svg>
+              </button>
+              <button
+                onClick={() => { setOpen(false); setMaximized(false) }}
                 aria-label="Close chat"
                 class="rounded-lg p-1.5 text-sm opacity-50 transition-opacity hover:opacity-100"
               >
