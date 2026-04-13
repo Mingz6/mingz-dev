@@ -3,6 +3,7 @@ import { createEffect, createSignal, For, onMount, Show } from "solid-js"
 interface Message {
   role: "user" | "bot"
   text: string
+  audio?: string
 }
 
 const API_URL = import.meta.env.PUBLIC_CHAT_API_URL || "http://localhost:8000"
@@ -27,6 +28,7 @@ export default function ChatWidget() {
   const [messages, setMessages] = createSignal<Message[]>([])
   const [input, setInput] = createSignal("")
   const [loading, setLoading] = createSignal(false)
+  const [muted, setMuted] = createSignal(false)
   let messagesEnd: HTMLDivElement | undefined
   let inputRef: HTMLInputElement | undefined
 
@@ -37,11 +39,13 @@ export default function ChatWidget() {
       try { setMessages(JSON.parse(saved)) } catch { /* ignore bad data */ }
     }
     setOpen(sessionStorage.getItem(STORAGE_KEYS.open) === "true")
+    setMuted(sessionStorage.getItem("neuro-ming-muted") === "true")
   })
 
-  // Persist messages whenever they change
+  // Persist messages (without audio — too large for sessionStorage)
   createEffect(() => {
-    sessionStorage.setItem(STORAGE_KEYS.messages, JSON.stringify(messages()))
+    const stripped = messages().map(({ role, text }) => ({ role, text }))
+    sessionStorage.setItem(STORAGE_KEYS.messages, JSON.stringify(stripped))
   })
 
   // Persist open/closed state
@@ -64,6 +68,19 @@ export default function ChatWidget() {
     }
   })
 
+  const playAudio = (base64Data?: string) => {
+    if (!base64Data || muted()) return
+    try {
+      new Audio("data:audio/mpeg;base64," + base64Data).play().catch(() => {})
+    } catch { /* ignore */ }
+  }
+
+  const toggleMute = () => {
+    const next = !muted()
+    setMuted(next)
+    sessionStorage.setItem("neuro-ming-muted", String(next))
+  }
+
   const sendMessage = async () => {
     const text = input().trim()
     if (!text || loading()) return
@@ -76,11 +93,16 @@ export default function ChatWidget() {
       const res = await fetch(`${API_URL}/chat`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ message: text, session_id: getSessionId() }),
+        body: JSON.stringify({
+          message: text,
+          session_id: getSessionId(),
+          tts_enabled: !muted(),
+        }),
       })
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       const data = await res.json()
-      setMessages((prev) => [...prev, { role: "bot", text: data.response }])
+      setMessages((prev) => [...prev, { role: "bot", text: data.response, audio: data.audio }])
+      playAudio(data.audio)
     } catch {
       setMessages((prev) => [
         ...prev,
@@ -167,6 +189,14 @@ export default function ChatWidget() {
             </div>
             <div class="flex items-center gap-1">
               <button
+                onClick={toggleMute}
+                aria-label={muted() ? "Unmute voice" : "Mute voice"}
+                class="rounded-lg p-1.5 text-sm opacity-50 transition-opacity hover:opacity-100"
+                title={muted() ? "Unmute voice" : "Mute voice"}
+              >
+                {muted() ? "🔇" : "🔊"}
+              </button>
+              <button
                 onClick={clearChat}
                 aria-label="Clear chat"
                 class="rounded-lg p-1.5 text-sm opacity-50 transition-opacity hover:opacity-100"
@@ -226,14 +256,26 @@ export default function ChatWidget() {
                 <div
                   class={`mb-3 flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                 >
-                  <div
-                    class={`max-w-[80%] whitespace-pre-wrap rounded-2xl px-3.5 py-2 text-sm leading-relaxed ${
-                      msg.role === "user"
-                        ? "rounded-br-md bg-accent-1 text-white"
-                        : "rounded-bl-md bg-black/5 text-black dark:bg-white/10 dark:text-white"
-                    }`}
-                  >
-                    {msg.text}
+                  <div class="group flex items-end gap-1">
+                    <div
+                      class={`max-w-[80%] whitespace-pre-wrap rounded-2xl px-3.5 py-2 text-sm leading-relaxed ${
+                        msg.role === "user"
+                          ? "rounded-br-md bg-accent-1 text-white"
+                          : "rounded-bl-md bg-black/5 text-black dark:bg-white/10 dark:text-white"
+                      }`}
+                    >
+                      {msg.text}
+                    </div>
+                    <Show when={msg.role === "bot" && msg.audio}>
+                      <button
+                        onClick={() => playAudio(msg.audio)}
+                        class="mb-1 text-xs opacity-0 transition-opacity group-hover:opacity-50 hover:!opacity-100"
+                        title="Replay"
+                        aria-label="Replay audio"
+                      >
+                        🔊
+                      </button>
+                    </Show>
                   </div>
                 </div>
               )}

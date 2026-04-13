@@ -100,7 +100,7 @@ docker compose up -d
 docker ps  # all 3 running
 ```
 
-SQL Server — both databases (ECDB and contextual-help) came up ONLINE with all data intact. Azurite responded on ports 10000-10002. Redis returned PONG.
+SQL Server — all databases came up ONLINE with data intact. Azurite responded on ports 10000-10002. Redis returned PONG.
 
 No config changes needed anywhere. Every app that was hitting `localhost:1433`, `localhost:6379`, or `localhost:10000` kept working.
 
