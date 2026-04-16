@@ -1,0 +1,45 @@
+---
+title: "Document Intelligence Pipeline"
+summary: "Upload a document, get structured data back — Azure AI extracts fields from tax slips, leases, invoices, and custom document types."
+date: "Apr 07 2024"
+draft: false
+tags:
+- Azure AI
+- .NET
+- React
+- TypeScript
+- Bicep
+---
+
+import DocumentIntelligenceDemo from "@/components/DocumentIntelligenceDemo.tsx"
+
+Full-stack document analysis pipeline: drag-and-drop upload → .NET Azure Function → Azure AI Document Intelligence → structured field extraction with confidence scores.
+
+## Try it
+
+Drop any file below — the demo shows what the real output looks like using sample data.
+
+<DocumentIntelligenceDemo client:visible />
+
+## How the real system works
+
+- **.NET 8 Azure Function** — `POST /api/documents/analyze` receives the file via FormData, forwards it to Azure Document Intelligence, and returns typed results
+- **Custom-trained model** — trained on specific document layouts that Azure doesn't support out of the box
+- **React frontend** — drag-and-drop with react-dropzone, loading/error states, structured result table
+- **Bicep IaC** — Azure Function App + Document Intelligence resource provisioned via Bicep, deployed through GitHub Actions
+
+## Cloud AI vs local OCR — when to use which
+
+I also built a local document processing pipeline using Apple Vision OCR + tesseract (via `ocrmypdf`). Different tools for different jobs:
+
+| | Azure Document Intelligence | Local OCR pipeline (Vision + tesseract) |
+|---|---|---|
+| **What it does** | Extracts **structured fields** — name, date, amount, address — from known document types | Extracts **raw text** and embeds a searchable text layer into PDFs |
+| **Best for** | Forms, tax slips, invoices, leases — anything with fields you want as data | Archival: making scanned PDFs searchable, tagging metadata for Spotlight |
+| **Custom models** | Yes — train on your own document layouts via Azure AI Studio | No — just OCR, no field extraction |
+| **Accuracy** | High on structured docs (95%+), understands tables and key-value pairs | Apple Vision is better for CJK and handwriting; tesseract is better for bulk |
+| **Runs where** | Cloud (Azure) — pay per page analyzed | Local (macOS) — free, no data leaves your machine |
+| **Privacy** | Document content goes to Azure | Everything stays on-device |
+| **Output** | JSON with typed fields, confidence scores, bounding boxes | Searchable PDF + plain text dump |
+
+**The short version**: use Azure Document Intelligence when you need to *understand* a document (pull out specific fields). Use local OCR when you need to *read* a document (make it searchable and organize it).

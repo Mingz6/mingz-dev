@@ -1,0 +1,96 @@
+---
+title: "Bot Framework Web Chat Integration"
+summary: "Floating chat widget backed by Microsoft Bot Framework — Direct Line token auth, Power Virtual Agents, custom store middleware, and minimizable UX."
+date: "Mar 18 2024"
+draft: false
+tags:
+- React
+- Bot Framework
+- TypeScript
+- Azure
+---
+
+import WebChatDemo from "@/components/WebChatDemo.tsx"
+
+Embedding a bot into a web app sounds simple until you actually try it. This project went through 5 iterations — each one teaching me something new about how Microsoft's bot ecosystem actually works under the hood.
+
+## Try it
+
+Click the chat bubble, type a message, minimize it, switch sides. This simulates the real UX.
+
+<WebChatDemo client:visible />
+
+## The journey — 5 iterations
+
+I went through 5 separate branches trying to get this right. Each one solved one problem and uncovered the next:
+
+### 1. QnA Maker embed (chatAgent)
+
+Started simple: embed a QnA Maker bot using the iframe embed URL from the Azure portal. Worked, but zero customization — no styling, no minimize, no control over the UX. The iframe approach is a dead end if you want any real integration.
+
+### 2. Direct Line + conversation persistence (chatAgent2)
+
+Switched from iframe to Bot Framework Web Chat SDK with Direct Line. Built the minimizable panel, but hit the first real wall: **when you minimize the chat, you lose the conversation**. Explored `conversationId`-based reconnection via the [Direct Line 3.0 reconnect API](https://docs.microsoft.com/en-us/azure/bot-service/rest-api/bot-framework-rest-direct-line-3-0-reconnect-to-conversation), but couldn't get reliable session persistence across minimize/maximize cycles.
+
+The fix: keep the Web Chat component mounted in the DOM even when hidden (`display: none` via CSS class), instead of unmounting it. This preserves the Direct Line WebSocket connection.
+
+### 3. Full-stack custom bot (copilot)
+
+Built a complete .NET backend from scratch:
+- **Bot project** — `ActivityHandler`-based bot with `BotController` (`POST /api/messages`), error handling adapter with `OnTurnError` trace logging
+- **Token API** — separate ASP.NET Core API that generates Direct Line tokens bound to random user IDs (`dl_` prefix, `RNGCryptoServiceProvider`), exposing `GET /api/directline/token`
+- **DI wiring** — `IBotFrameworkHttpAdapter` + `IBot` registered in Startup, clean separation between the bot runtime and the token service
+
+This taught me the two-service architecture: the bot handles conversations, a separate API handles token generation so the frontend never touches the Direct Line secret.
+
+### 4. Power Virtual Agents (copilotMary)
+
+Replaced the custom bot with Power Virtual Agents (PVA). Completely different auth flow:
+1. Fetch **regional channel settings** from the Power Platform API to get the correct Direct Line endpoint for your environment
+2. Fetch a **conversation token** from the PVA-specific token URL
+3. Pass both the `directLine` endpoint and `token` to the Web Chat SDK
+
+The tricky part: PVA uses a different token endpoint per environment, and you need to parse the URL to extract the `api-version` and environment base URL. Hardcoding breaks when the environment changes.
+
+### 5. Polished integration (chatBot)
+
+Final version: cleaned up the React component, integrated into the real app footer, added the UX polish:
+- **Custom store middleware** — intercepts `DIRECT_LINE/CONNECT_FULFILLED` to auto-send a join event with the user's browser language, and tracks `DIRECT_LINE/INCOMING_ACTIVITY` for the new-message notification dot
+- **Minimizable panel** — floating avatar button, expand/collapse with CSS transitions, side-switching (left ↔ right)
+- **Styled Web Chat** — `createStyleSet` for custom colors, fonts, avatar images, hidden upload button
+- **Dismissible alert banner** — scrolling marquee for consent/privacy notices using react-fast-marquee
+
+## Architecture
+
+The final integration has three layers:
+
+```
+┌─────────────────────────┐
+│   React Frontend        │
+│  ┌────────────────────┐ │
+│  │ MinimizableWebChat │ │  ← Floating panel, store middleware
+│  │  └─► WebChat       │ │  ← Bot Framework Web Chat SDK
+│  │       └─► DirectLine│ │  ← WebSocket connection
+│  └────────────────────┘ │
+└────────────┬────────────┘
+             │ Token fetch
+┌────────────▼────────────┐
+│   Token API (.NET)      │
+│  GET /api/directline/   │  ← Generates user-bound tokens
+│      token              │     using Direct Line secret
+└────────────┬────────────┘
+             │ Direct Line 3.0
+┌────────────▼────────────┐
+│   Bot Service (Azure)   │
+│  POST /api/messages     │  ← ActivityHandler processes turns
+│  or Power Virtual Agent │     with error handling + tracing
+└─────────────────────────┘
+```
+
+## What I learned
+
+- **Never expose the Direct Line secret to the frontend.** Always use a server-side token API that generates short-lived, user-bound tokens.
+- **Don't unmount the chat on minimize.** Bot Framework Web Chat calls `disconnect()` on the DirectLine object when unmounted. Hide it with CSS instead.
+- **PVA and custom bots use different token flows.** PVA requires a regional channel settings lookup first; custom bots use the standard Direct Line token endpoint.
+- **The `createStore` middleware is the key integration point.** That's where you intercept connection events, track incoming messages, and add custom behavior — not in the component lifecycle.
+- **Two-service architecture for bots is the right pattern.** Bot runtime and token API are separate concerns with different security profiles.
