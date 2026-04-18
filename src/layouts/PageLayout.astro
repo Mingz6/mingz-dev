@@ -21,7 +21,7 @@ import { SITE } from "@consts"
       <slot />
     </main>
     <Footer />
-    <ChatWidget client:load />
+    <ChatWidget client:idle />
     <script is:inline>
       function initBlurUp() {
         document.querySelectorAll("article img").forEach(img => {

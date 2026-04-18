@@ -284,9 +284,9 @@ export default function ChatWidget() {
             <Show when={loading()}>
               <div class="mb-3 flex justify-start">
                 <div class="flex gap-1 rounded-2xl rounded-bl-md bg-black/5 px-4 py-3 dark:bg-white/10">
-                  <span class="animate-bounce text-xs opacity-60" style="animation-delay: 0ms">●</span>
-                  <span class="animate-bounce text-xs opacity-60" style="animation-delay: 150ms">●</span>
-                  <span class="animate-bounce text-xs opacity-60" style="animation-delay: 300ms">●</span>
+                  <span class="animate-bounce text-xs opacity-60 [animation-delay:0ms]">●</span>
+                  <span class="animate-bounce text-xs opacity-60 [animation-delay:150ms]">●</span>
+                  <span class="animate-bounce text-xs opacity-60 [animation-delay:300ms]">●</span>
                 </div>
               </div>
             </Show>
