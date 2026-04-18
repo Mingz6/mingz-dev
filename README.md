@@ -6,7 +6,7 @@ Personal portfolio and blog at [mingz.dev](https://mingz.dev).
 
 - **Framework:** Astro 4 (static site generation)
 - **Styling:** Tailwind CSS 3
-- **Interactive:** SolidJS (search)
+- **Interactive islands:** SolidJS (search, chat widget, project demos)
 - **Hosting:** Azure Static Web Apps
 - **CI/CD:** GitHub Actions (auto-deploy on push to main)
 
@@ -16,12 +16,14 @@ Personal portfolio and blog at [mingz.dev](https://mingz.dev).
 src/
 ├── content/
 │   ├── blog/          # Markdown blog posts
-│   └── projects/      # Project showcase entries
-├── components/        # Reusable Astro/Solid components
+│   └── projects/      # Project showcase entries (some with .mdx demos)
+├── components/        # .astro for SSG, .tsx (Solid) for interactive
 ├── data/              # Static data (build log, etc.)
 ├── layouts/           # Page layouts
-├── pages/             # Routes
+├── lib/               # Shared TS helpers (formatDate, cn, etc.)
+├── pages/             # Routes (file-based)
 └── styles/            # Global CSS
+public/js/             # Vanilla JS progressive enhancement
 ```
 
 ## Dev

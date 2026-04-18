@@ -29,6 +29,7 @@ src/
   layouts/            Shared page shells
   pages/              Routes (file-based)
   data/               Static build-time data (e.g. build log)
+  lib/                Shared TS helpers (formatDate, cn, etc.)
   styles/             Global CSS (minimal — Tailwind does most of it)
 public/js/            Vanilla JS progressive enhancement (animate, tilt, theme)
 ```
