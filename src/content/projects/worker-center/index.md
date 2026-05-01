@@ -1,7 +1,7 @@
 ---
 title: "Worker Center"
 summary: "Dockerized deal hunter for Mac Mini M4 — scrapes 5 marketplaces, scores deals with LLM, sends iMessage alerts when it finds a steal."
-date: "Jun 22 2026"
+date: "Apr 30 2026"
 draft: false
 repoUrl: https://github.com/Mingz6/worker-center
 tags:

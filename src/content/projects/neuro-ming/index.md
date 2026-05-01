@@ -16,7 +16,7 @@ An AI assistant with a distinct personality — part chatbot, part VTuber experi
 
 ## What it does
 
-- **M1 — Chat**: Azure OpenAI GPT-5.2, real Ming persona (mined from brain repo, PII-scrubbed), multi-turn memory
+- **M1 — Chat**: Azure OpenAI GPT-5.4, real Ming persona (mined from brain repo, PII-scrubbed), multi-turn memory
 - **M2 — Voice**: Text-to-speech on every bot response. Mute toggle, click-to-replay. Azure OpenAI TTS (nova voice)
 
 ## Architecture
