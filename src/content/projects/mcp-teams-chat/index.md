@@ -8,7 +8,6 @@ tags:
 - MCP
 - Graph API
 - Azure
-repoUrl: https://github.com/Mingz6/mcp-servers
 ---
 
 A Model Context Protocol (MCP) server that connects AI coding assistants (like GitHub Copilot) to Microsoft Teams chat data via the Graph API.

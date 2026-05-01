@@ -72,7 +72,7 @@ es.onmessage = (e) => console.log(e.data);
 
 That's it. No Hub, no client library, no fallback negotiation. SSE just works.
 
-I did this in my AI assistant project ([neuro-ming](https://github.com/Mingz6/neuro-ming)) for streaming LLM tokens. The chat UI used to wait for the whole response before showing anything (~3 second delay). With SSE streaming each token, first paint dropped to about 300ms. Same end-to-end work, dramatically better perceived latency.
+I did this in my AI assistant project ([neuro-ming](/projects/neuro-ming)) for streaming LLM tokens. The chat UI used to wait for the whole response before showing anything (~3 second delay). With SSE streaming each token, first paint dropped to about 300ms. Same end-to-end work, dramatically better perceived latency.
 
 ### Stack: Node.js / TypeScript
 
@@ -86,7 +86,7 @@ You don't need real-time push at all — your "backend" is a CDN. If you genuine
 
 A status page that updates when a long job finishes. A dashboard that refreshes when a worker run completes. SSE. Every time.
 
-For my [worker-center](https://github.com/Mingz6/worker-center) dashboard, the page used to regenerate as static HTML every 4 hours. Anything that happened in between was invisible until the next regeneration. Adding SSE to push worker-completion events meant the dashboard updates within seconds of a run finishing. No SignalR, no Hub, no backplane — just an asyncio queue and a `StreamingResponse`.
+For my [worker-center](/projects/worker-center) dashboard, the page used to regenerate as static HTML every 4 hours. Anything that happened in between was invisible until the next regeneration. Adding SSE to push worker-completion events meant the dashboard updates within seconds of a run finishing. No SignalR, no Hub, no backplane — just an asyncio queue and a `StreamingResponse`.
 
 ### Use case: high-frequency two-way (multiplayer game, collaborative editor)
 

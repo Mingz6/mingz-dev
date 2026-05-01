@@ -8,7 +8,7 @@ tags:
 - TypeScript
 - Tailwind
 - Azure
-repoUrl: https://github.com/Mingz6/mingz-dev
+demoUrl: https://mingz.dev
 ---
 
 My personal portfolio site — the one you're looking at right now.

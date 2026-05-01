@@ -3,7 +3,6 @@ title: "Neuro-Ming"
 summary: "AI VTuber assistant — personality, memory, text-to-speech. Chat with Ming's AI twin on mingz.dev."
 date: "Feb 15 2026"
 draft: false
-repoUrl: https://github.com/Mingz6/neuro-ming
 tags:
 - Python
 - AI

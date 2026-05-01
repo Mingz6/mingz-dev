@@ -3,7 +3,6 @@ title: "MCP Servers Monorepo"
 summary: "Monorepo of custom MCP servers (Teams, Outlook, WeChat, iMessage) plus third-party integrations to power AI automation workflows."
 date: "Apr 30 2026"
 draft: false
-repoUrl: https://github.com/Mingz6/mcp-servers
 tags:
 - TypeScript
 - Python

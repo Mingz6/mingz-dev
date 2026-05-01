@@ -3,7 +3,6 @@ title: "PR Reviewer Daemon"
 summary: "Autonomous AI code reviewer that runs on your machine — polls GitHub for PRs, gathers context from multiple sources, and posts inline review comments."
 date: "Apr 07 2026"
 draft: false
-repoUrl: https://github.com/Mingz6/pr-reviewer-daemon
 tags:
 - TypeScript
 - AI
