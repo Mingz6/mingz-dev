@@ -3,6 +3,7 @@ title: "Neuro-Ming"
 summary: "AI VTuber assistant — personality, memory, text-to-speech. Chat with Ming's AI twin on mingz.dev."
 date: "Feb 15 2026"
 draft: false
+repoUrl: https://github.com/Mingz6/neuro-ming
 tags:
 - Python
 - AI
@@ -10,8 +11,6 @@ tags:
 - TTS
 - Azure
 ---
-
-<!-- TODO: Make repo public or keep private. Add repoUrl when ready. Due: June 7, 2026 -->
 
 An AI assistant with a distinct personality — part chatbot, part VTuber experiment. Talk to it in the bottom-right corner of this site.
 

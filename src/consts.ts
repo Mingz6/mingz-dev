@@ -43,6 +43,10 @@ export const LINKS: Links = [
     TEXT: "About", 
     HREF: "/about", 
   },
+  {
+    TEXT: "Resume",
+    HREF: "/resume/m1ngz-2026",
+  },
 ]
 
 // Socials
