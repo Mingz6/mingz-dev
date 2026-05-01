@@ -263,13 +263,13 @@ export default function ChatWidget() {
             <For each={messages()}>
               {(msg) => (
                 <div
-                  class={`mb-3 flex ${msg.role === "user" ? "justify-end" : "justify-start"}`}
+                  class={`mb-3 flex w-full ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                 >
-                  <div class="group flex items-end gap-1">
+                  <div class={`group flex items-end gap-1 ${msg.role === "user" ? "w-[90%] justify-end" : ""}`}>
                     <div
                       class={`whitespace-pre-line break-words rounded-2xl px-4 py-2.5 text-sm leading-7 ${
                         msg.role === "user"
-                          ? "w-[90%] rounded-br-md bg-accent-1 text-white"
+                          ? "w-full rounded-br-md bg-accent-1 text-white"
                           : "max-w-[90%] rounded-bl-md border border-black/5 bg-black/5 text-black dark:border-white/10 dark:bg-white/10 dark:text-white"
                       }`}
                     >
