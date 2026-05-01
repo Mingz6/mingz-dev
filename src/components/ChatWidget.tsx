@@ -6,6 +6,15 @@ interface Message {
   audio?: string
 }
 
+function formatBotText(text: string): string {
+  return text
+    .replace(/\r\n/g, "\n")
+    .replace(/\n{3,}/g, "\n\n")
+    .replace(/^\s*-\s+/gm, "• ")
+    .replace(/\s{2,}\n/g, "\n")
+    .trim()
+}
+
 const API_URL = import.meta.env.PUBLIC_CHAT_API_URL || "http://localhost:8000"
 const STORAGE_KEYS = {
   session: "neuro-ming-session",
@@ -258,13 +267,13 @@ export default function ChatWidget() {
                 >
                   <div class="group flex items-end gap-1">
                     <div
-                      class={`max-w-[80%] whitespace-pre-wrap rounded-2xl px-3.5 py-2 text-sm leading-relaxed ${
+                      class={`whitespace-pre-line break-words rounded-2xl px-4 py-2.5 text-sm leading-7 ${
                         msg.role === "user"
-                          ? "rounded-br-md bg-accent-1 text-white"
-                          : "rounded-bl-md bg-black/5 text-black dark:bg-white/10 dark:text-white"
+                          ? "max-w-[82%] rounded-br-md bg-accent-1 text-white"
+                          : "max-w-[90%] rounded-bl-md border border-black/5 bg-black/5 text-black dark:border-white/10 dark:bg-white/10 dark:text-white"
                       }`}
                     >
-                      {msg.text}
+                      {msg.role === "bot" ? formatBotText(msg.text) : msg.text}
                     </div>
                     <Show when={msg.role === "bot" && msg.audio}>
                       <button
