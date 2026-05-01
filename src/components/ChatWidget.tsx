@@ -269,7 +269,7 @@ export default function ChatWidget() {
                     <div
                       class={`whitespace-pre-line break-words rounded-2xl px-4 py-2.5 text-sm leading-7 ${
                         msg.role === "user"
-                          ? "max-w-[82%] rounded-br-md bg-accent-1 text-white"
+                          ? "max-w-[90%] rounded-br-md bg-accent-1 text-white"
                           : "max-w-[90%] rounded-bl-md border border-black/5 bg-black/5 text-black dark:border-white/10 dark:bg-white/10 dark:text-white"
                       }`}
                     >
