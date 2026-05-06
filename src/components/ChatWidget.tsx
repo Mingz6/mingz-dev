@@ -37,7 +37,7 @@ export default function ChatWidget() {
   const [messages, setMessages] = createSignal<Message[]>([])
   const [input, setInput] = createSignal("")
   const [loading, setLoading] = createSignal(false)
-  const [muted, setMuted] = createSignal(false)
+  const [muted, setMuted] = createSignal(true)
   let messagesEnd: HTMLDivElement | undefined
   let inputRef: HTMLInputElement | undefined
 
