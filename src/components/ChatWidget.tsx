@@ -38,6 +38,9 @@ export default function ChatWidget() {
   const [input, setInput] = createSignal("")
   const [loading, setLoading] = createSignal(false)
   const [muted, setMuted] = createSignal(true)
+  const [playingIdx, setPlayingIdx] = createSignal<number | null>(null)
+  const [audioState, setAudioState] = createSignal<"idle" | "playing" | "paused">("idle")
+  let currentAudio: HTMLAudioElement | null = null
   let messagesEnd: HTMLDivElement | undefined
   let inputRef: HTMLInputElement | undefined
 
@@ -77,17 +80,58 @@ export default function ChatWidget() {
     }
   })
 
-  const playAudio = (base64Data?: string) => {
-    if (!base64Data || muted()) return
-    try {
-      new Audio("data:audio/mpeg;base64," + base64Data).play().catch(() => {})
-    } catch { /* ignore */ }
+  const stopAudio = () => {
+    if (currentAudio) {
+      currentAudio.pause()
+      currentAudio = null
+    }
+    setPlayingIdx(null)
+    setAudioState("idle")
+  }
+
+  const playAudioForMsg = (base64Data: string, idx: number) => {
+    stopAudio()
+    const audio = new Audio("data:audio/mpeg;base64," + base64Data)
+    currentAudio = audio
+    setPlayingIdx(idx)
+    setAudioState("playing")
+    audio.addEventListener("ended", () => {
+      currentAudio = null
+      setPlayingIdx(null)
+      setAudioState("idle")
+    })
+    audio.play().catch(() => stopAudio())
+  }
+
+  const pauseAudio = () => {
+    if (currentAudio && !currentAudio.paused) {
+      currentAudio.pause()
+      setAudioState("paused")
+    }
+  }
+
+  const resumeAudio = () => {
+    if (currentAudio?.paused) {
+      currentAudio.play().catch(() => stopAudio())
+      setAudioState("playing")
+    }
+  }
+
+  const restartAudio = (base64Data: string, idx: number) => {
+    if (currentAudio && playingIdx() === idx) {
+      currentAudio.currentTime = 0
+      currentAudio.play().catch(() => stopAudio())
+      setAudioState("playing")
+    } else {
+      playAudioForMsg(base64Data, idx)
+    }
   }
 
   const toggleMute = () => {
     const next = !muted()
     setMuted(next)
     sessionStorage.setItem("neuro-ming-muted", String(next))
+    if (next) stopAudio()
   }
 
   const sendMessage = async () => {
@@ -110,8 +154,9 @@ export default function ChatWidget() {
       })
       if (!res.ok) throw new Error(`HTTP ${res.status}`)
       const data = await res.json()
+      const newIdx = messages().length
       setMessages((prev) => [...prev, { role: "bot", text: data.response, audio: data.audio }])
-      playAudio(data.audio)
+      if (!muted() && data.audio) playAudioForMsg(data.audio, newIdx)
     } catch {
       setMessages((prev) => [
         ...prev,
@@ -261,7 +306,7 @@ export default function ChatWidget() {
             </Show>
 
             <For each={messages()}>
-              {(msg) => (
+              {(msg, idx) => (
                 <div
                   class={`mb-3 flex w-full ${msg.role === "user" ? "justify-end" : "justify-start"}`}
                 >
@@ -276,14 +321,46 @@ export default function ChatWidget() {
                       {msg.role === "bot" ? formatBotText(msg.text) : msg.text}
                     </div>
                     <Show when={msg.role === "bot" && msg.audio}>
-                      <button
-                        onClick={() => playAudio(msg.audio)}
-                        class="mb-1 text-xs opacity-0 transition-opacity group-hover:opacity-50 hover:!opacity-100"
-                        title="Replay"
-                        aria-label="Replay audio"
-                      >
-                        🔊
-                      </button>
+                      <div class="mb-1 flex gap-1 opacity-0 transition-opacity group-hover:opacity-100">
+                        <Show
+                          when={playingIdx() === idx() && audioState() !== "idle"}
+                          fallback={
+                            <button
+                              onClick={() => playAudioForMsg(msg.audio!, idx())}
+                              class="rounded p-1 text-xs hover:opacity-100 opacity-50"
+                              title="Play"
+                              aria-label="Play audio"
+                            >▶</button>
+                          }
+                        >
+                          <Show
+                            when={audioState() === "playing"}
+                            fallback={
+                              <>
+                                <button
+                                  onClick={() => restartAudio(msg.audio!, idx())}
+                                  class="rounded p-1 text-xs hover:opacity-100 opacity-50"
+                                  title="Start over"
+                                  aria-label="Start over"
+                                >⟳</button>
+                                <button
+                                  onClick={resumeAudio}
+                                  class="rounded p-1 text-xs hover:opacity-100 opacity-50"
+                                  title="Resume"
+                                  aria-label="Resume audio"
+                                >▶</button>
+                              </>
+                            }
+                          >
+                            <button
+                              onClick={pauseAudio}
+                              class="rounded p-1 text-xs hover:opacity-100 opacity-50"
+                              title="Pause"
+                              aria-label="Pause audio"
+                            >⏸</button>
+                          </Show>
+                        </Show>
+                      </div>
                     </Show>
                   </div>
                 </div>
