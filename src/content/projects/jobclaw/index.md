@@ -13,6 +13,18 @@ tags:
 
 Built this at the OpenClaw Hackathon (Vancouver AI Meetup, Q2 2026). The prompt was simple: build an AI agent that solves a real problem. Job hunting felt like the obvious pick — it's repetitive, soul-crushing, and ripe for automation.
 
+## Demo
+
+<div class="aspect-video w-full rounded-lg overflow-hidden my-4">
+  <iframe
+    src="https://www.youtube.com/embed/7_22k9xAfk8"
+    title="JobClaw demo"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+    allowfullscreen
+    class="w-full h-full"
+  ></iframe>
+</div>
+
 ## What it does
 
 JobClaw wraps a job-scraping + scoring pipeline into a web UI with an AI co-pilot:
