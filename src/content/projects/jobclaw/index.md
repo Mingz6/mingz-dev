@@ -15,15 +15,20 @@ Built this at the OpenClaw Hackathon (Vancouver AI Meetup, Q2 2026). The prompt 
 
 ## Demo
 
-<div class="aspect-video w-full rounded-lg overflow-hidden my-4">
-  <iframe
-    src="https://www.youtube.com/embed/7_22k9xAfk8"
-    title="JobClaw demo"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-    class="w-full h-full"
-  ></iframe>
-</div>
+<a href="https://youtu.be/7_22k9xAfk8" target="_blank" rel="noopener noreferrer" class="block relative group my-4 rounded-lg overflow-hidden">
+  <img
+    src="https://img.youtube.com/vi/7_22k9xAfk8/maxresdefault.jpg"
+    alt="Watch JobClaw demo on YouTube"
+    class="w-full rounded-lg"
+  />
+  <div class="absolute inset-0 flex flex-col items-center justify-center bg-black/40 group-hover:bg-black/50 transition-colors rounded-lg gap-2">
+    <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" class="drop-shadow-lg">
+      <circle cx="12" cy="12" r="12" fill="rgba(255,0,0,0.85)" />
+      <polygon points="10,8 17,12 10,16" fill="white" />
+    </svg>
+    <span class="text-white text-sm font-medium opacity-90">Watch on YouTube</span>
+  </div>
+</a>
 
 ## What it does
 
