@@ -1,6 +1,6 @@
 ---
 title: "VamAi Workshop"
-summary: "AI/ML workshop materials — Jupyter notebooks covering computer vision, NLP, and model training experiments."
+summary: "Vancouver AI Meetup — weekly workshops, hackathons, and AI experiments. Built JobClaw here at the OpenClaw Hackathon Q2 2026."
 date: "Jun 10 2025"
 draft: false
 tags:
@@ -11,15 +11,17 @@ tags:
 repoUrl: https://github.com/Mingz6/VamAi
 ---
 
-<!-- TODO: Retrofit this repo — study purpose, update content. Due: June 7, 2026 -->
+Vancouver AI Meetup is a weekly learning group. I've been coming here to stay sharp on the AI tooling side — hands-on builds, not just lectures.
 
-A collection of AI/ML workshop materials and experiments. Jupyter notebooks covering various machine learning topics.
+## OpenClaw Hackathon (Q2 2026)
 
-## Topics covered
+Built [JobClaw](/projects/jobclaw) here — an AI job-hunting agent that scrapes 7+ sources, LLM-scores fit, drafts cover letters, and tracks the application pipeline.
+
+## Workshop Materials
+
+Jupyter notebooks and experiments from the weekly sessions:
 
 - Computer vision experiments
 - NLP and text classification
 - Model training and evaluation
 - Data preprocessing pipelines
-
-Built as learning materials that double as reference implementations.
