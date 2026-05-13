@@ -1,6 +1,6 @@
 ---
 title: "JobClaw"
-summary: "AI job-hunting agent built at the OpenClaw Hackathon — scrapes 13+ sources, scores fit with LLM, drafts cover letters, and tracks the pipeline."
+summary: "AI job-hunting agent built at the OpenClaw Hackathon — scrapes 20+ sources, scores fit with LLM, drafts cover letters, and tracks the pipeline."
 date: "May 08 2026"
 draft: false
 tags:
@@ -30,7 +30,7 @@ Built this at the OpenClaw Hackathon (Vancouver AI Meetup, Q2 2026). The prompt 
 
 JobClaw wraps a job-scraping + scoring pipeline into a web UI with an AI co-pilot:
 
-- **Scan** — pulls from 13+ sources (LinkedIn, Indeed, RemoteOK, Remotive, WeWorkRemotely, HN Who's Hiring, GC Jobs, Himalayas, Dice, FAANG career pages, Reddit r/forhire, and more). LLM scores each posting against my resume and flags qualified matches
+- **Scan** — pulls from 20+ sources (LinkedIn, Indeed, RemoteOK, Remotive, WeWorkRemotely, HN Who's Hiring, GC Jobs, Himalayas, Dice, FAANG career pages, Reddit r/forhire, and more). LLM scores each posting against my resume and flags qualified matches
 - **Analyze** — paste any job URL or description, get a fit score and gap analysis on demand
 - **Draft** — generates tailored cover letters and resume bullet points for a specific posting
 - **Track** — application pipeline from interested → applied → interviewing → offer, backed by a JSONL ledger
@@ -47,5 +47,5 @@ The LLM layer uses Azure OpenAI with multi-turn history stored in-memory per ses
 - Python, Flask
 - OpenAI
 - LangGraph (agent routing)
-- Multi-source job scraping (13+ sources)
+- Multi-source job scraping (20+ sources)
 - JSONL application ledger
