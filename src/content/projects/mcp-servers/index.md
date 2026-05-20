@@ -1,6 +1,6 @@
 ---
 title: "MCP Servers Monorepo"
-summary: "Monorepo of custom MCP servers (Teams, Outlook, WeChat, iMessage) plus third-party integrations to power AI automation workflows."
+summary: "6 custom MCP servers powering daily AI workflows — Teams, Outlook, WeChat, iMessage — so any agent can read, triage, and act on real communication data."
 date: "Apr 30 2026"
 draft: false
 tags:

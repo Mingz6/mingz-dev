@@ -1,6 +1,6 @@
 ---
 title: "Worker Center"
-summary: "Dockerized deal hunter for Mac Mini M4 — scrapes 5 marketplaces, scores deals with LLM, sends iMessage alerts when it finds a steal."
+summary: "Self-hosted deal sniper — scrapes 5 marketplaces every 15 min, scores deals with LLM, and sends iMessage alerts when something hits the buy threshold."
 date: "Apr 30 2026"
 draft: false
 tags:

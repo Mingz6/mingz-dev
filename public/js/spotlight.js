@@ -1,5 +1,7 @@
 // Cursor spotlight effect — mouse-following radial gradient
 (function () {
+  if (!document.body) return;
+
   const spotlight = document.createElement("div");
   spotlight.id = "spotlight";
   spotlight.style.cssText = `

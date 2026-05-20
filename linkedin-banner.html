@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  width: 1584px;
+  height: 396px;
+  overflow: hidden;
+  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Segoe UI', sans-serif;
+}
+.banner {
+  width: 1584px;
+  height: 396px;
+  background: linear-gradient(135deg, #0f0f23 0%, #1a1a3e 30%, #0d1b2a 60%, #1b2838 100%);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle grid pattern */
+.banner::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-image: 
+    linear-gradient(rgba(99, 179, 237, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(99, 179, 237, 0.03) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Accent glow */
+.banner::after {
+  content: '';
+  position: absolute;
+  top: -100px;
+  right: 200px;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, rgba(56, 189, 248, 0.08) 0%, transparent 70%);
+  border-radius: 50%;
+}
+
+.left {
+  position: relative;
+  z-index: 2;
+}
+
+.name {
+  font-size: 42px;
+  font-weight: 700;
+  color: #f8fafc;
+  letter-spacing: -0.5px;
+  margin-bottom: 8px;
+}
+
+.title {
+  font-size: 22px;
+  font-weight: 400;
+  color: #94a3b8;
+  margin-bottom: 24px;
+}
+
+.title span {
+  color: #38bdf8;
+}
+
+.tech-stack {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  max-width: 700px;
+}
+
+.tech-pill {
+  background: rgba(56, 189, 248, 0.08);
+  border: 1px solid rgba(56, 189, 248, 0.2);
+  color: #7dd3fc;
+  padding: 6px 16px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  letter-spacing: 0.3px;
+}
+
+.right {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 16px;
+}
+
+.metric {
+  text-align: right;
+}
+
+.metric-value {
+  font-size: 32px;
+  font-weight: 700;
+  color: #38bdf8;
+}
+
+.metric-label {
+  font-size: 13px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.site {
+  font-size: 16px;
+  color: #64748b;
+  font-weight: 400;
+}
+
+.site span {
+  color: #e2e8f0;
+}
+
+/* Decorative elements */
+.dots {
+  position: absolute;
+  bottom: 30px;
+  left: 80px;
+  display: flex;
+  gap: 6px;
+  z-index: 2;
+}
+.dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: rgba(56, 189, 248, 0.3);
+}
+.dot:first-child { background: #38bdf8; }
+
+.line-accent {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #38bdf8 20%, #818cf8 50%, #38bdf8 80%, transparent);
+  opacity: 0.6;
+}
+</style>
+</head>
+<body>
+<div class="banner">
+  <div class="line-accent"></div>
+  
+  <div class="left">
+    <div class="name">Ming Zhu</div>
+    <div class="title">Full-Stack Engineer · <span>AI & Cloud</span></div>
+    <div class="tech-stack">
+      <div class="tech-pill">Azure</div>
+      <div class="tech-pill">.NET / C#</div>
+      <div class="tech-pill">React</div>
+      <div class="tech-pill">TypeScript</div>
+      <div class="tech-pill">Python</div>
+      <div class="tech-pill">AI / LLM</div>
+      <div class="tech-pill">MCP Servers</div>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="metric">
+      <div class="metric-value">8+</div>
+      <div class="metric-label">Years Building</div>
+    </div>
+    <div class="site"><span>mingz.dev</span></div>
+  </div>
+
+  <div class="dots">
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+    <div class="dot"></div>
+  </div>
+</div>
+</body>
+</html>

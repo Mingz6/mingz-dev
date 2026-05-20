@@ -1,6 +1,6 @@
 ---
 title: "JobClaw"
-summary: "AI job-hunting agent built at the OpenClaw Hackathon — scrapes 20+ sources, scores fit with LLM, drafts cover letters, and tracks the pipeline."
+summary: "AI job-hunting agent built at the OpenClaw Hackathon — scrapes 20+ sources, scores 200+ postings with LLM, drafts cover letters, and tracks the full pipeline end-to-end."
 date: "May 08 2026"
 draft: false
 tags:
