@@ -6,9 +6,10 @@ import BottomLayout from "@layouts/BottomLayout.astro"
 import ArrowCard from "@components/ArrowCard"
 import { SOCIALS } from "@consts"
 
-const featured = ["neuro-ming"]
+const featured = ["neuro-ming", "mcp-servers", "worker-center", "jobclaw"]
 const projects = (await getCollection("projects"))
   .filter(p => !p.data.draft && featured.includes(p.slug))
+  .sort((a, b) => featured.indexOf(a.slug) - featured.indexOf(b.slug))
 ---
 
 <PageLayout title="About" description="A bit about MingZ — developer, tinkerer, builder of things.">
@@ -33,9 +34,9 @@ const projects = (await getCollection("projects"))
         <!-- Bio -->
         <div class="space-y-5 text-base leading-relaxed">
           <p>
-            Hey — I'm <b>MingZ</b>. I'm a senior software engineer focused on AI and cloud,
-            based in Vancouver and working remotely. I build things on evenings and weekends:
-            AI agents, MCP servers, chatbots, smart home setups, and whatever else catches my attention.
+            Hey — I'm <b>MingZ</b>. Senior software engineer focused on AI and cloud,
+            based in Vancouver. By day I ship .NET + React systems on Azure. After hours I build
+            AI agents, MCP servers, and automation that makes my own workflows faster.
           </p>
           <p>
             My day-to-day stack is <b>.NET</b>, <b>React</b>, <b>Azure</b>, and <b>TypeScript</b>.

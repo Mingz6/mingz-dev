@@ -1,5 +1,25 @@
 [
   {
+    "date": "2026-05-19",
+    "text": "Code review + cleanup pass on mingz.dev — updated About bio, fixed preview script, added featured projects, freshened build log.",
+    "tags": ["astro", "web"]
+  },
+  {
+    "date": "2026-05-12",
+    "text": "Worker-center v2 — modular architecture with Ming HQ orchestrator, 5 marketplace scrapers running every 15 min.",
+    "tags": ["python", "ai"]
+  },
+  {
+    "date": "2026-05-05",
+    "text": "JobClaw hit 200+ daily postings across 20 sources. Added LLM scoring and auto-apply pipeline.",
+    "tags": ["python", "ai"]
+  },
+  {
+    "date": "2026-04-20",
+    "text": "MeetMate — Swift app for live meeting transcription with on-device Whisper + MLX summarization.",
+    "tags": ["swift", "ai"]
+  },
+  {
     "date": "2026-04-08",
     "text": "Added About page to the portfolio. Casual bio, MZ placeholder avatar, \"currently building\" section with linked project cards.",
     "tags": ["astro", "web"]
