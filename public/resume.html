@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mingzhi Zhu — Resume</title>
+<style>
+  @page { margin: 0.5in 0.6in; size: letter; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body {
+    font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    font-size: 10pt;
+    line-height: 1.45;
+    color: #1a1a1a;
+    max-width: 8.5in;
+    margin: 0 auto;
+    padding: 0.5in 0.6in;
+  }
+  a { color: #4f46e5; text-decoration: none; }
+  h1 { font-size: 22pt; font-weight: 700; letter-spacing: -0.5px; }
+  h2 { font-size: 11pt; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; border-bottom: 1.5px solid #4f46e5; padding-bottom: 3px; margin-top: 14px; margin-bottom: 6px; color: #4f46e5; }
+  h3 { font-size: 10.5pt; font-weight: 600; }
+  .header { display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 4px; }
+  .contact { text-align: right; font-size: 9pt; line-height: 1.6; }
+  .contact a { color: #4f46e5; }
+  .summary { margin-top: 8px; margin-bottom: 2px; }
+  .role { display: flex; justify-content: space-between; align-items: baseline; margin-top: 10px; }
+  .role-title { font-weight: 600; }
+  .role-date { font-size: 9pt; color: #555; white-space: nowrap; }
+  .company { font-style: italic; color: #333; margin-bottom: 3px; }
+  ul { padding-left: 16px; margin-top: 3px; }
+  li { margin-bottom: 2px; }
+  .skills-grid { display: grid; grid-template-columns: 120px 1fr; row-gap: 3px; margin-top: 4px; }
+  .skills-grid dt { font-weight: 600; font-size: 9pt; color: #555; }
+  .skills-grid dd { font-size: 9.5pt; }
+  .certs { margin-top: 4px; }
+  .certs li { list-style: none; padding-left: 0; }
+  .certs li::before { content: "▸ "; color: #4f46e5; }
+  .projects { margin-top: 4px; }
+  .projects li { margin-bottom: 3px; }
+  .projects li strong { font-weight: 600; }
+  @media print {
+    body { padding: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>Mingzhi Zhu</h1>
+  <div class="contact">
+    Vancouver, BC, Canada<br>
+    <a href="mailto:Mingz6@outlook.com">Mingz6@outlook.com</a> · 780-938-6286<br>
+    <a href="https://mingz.dev">mingz.dev</a> · <a href="https://github.com/Mingz6">github.com/Mingz6</a> · <a href="https://linkedin.com/in/mingzhi-zhu-23374863">LinkedIn</a>
+  </div>
+</div>
+
+<p class="summary">
+Senior Software Engineer with 14 years of experience building full-stack applications, AI-powered services, and cloud infrastructure on Azure. Currently focused on AI agents, the Model Context Protocol (MCP), and developer productivity automation. Strong track record of shipping production systems in .NET, React, and Azure — from enterprise web apps to autonomous AI agent frameworks.
+</p>
+
+<h2>Technical Skills</h2>
+<dl class="skills-grid">
+  <dt>Languages</dt>
+  <dd>C#, TypeScript, JavaScript, Python, SQL, Bash</dd>
+  <dt>Backend</dt>
+  <dd>.NET 8/9, ASP.NET Core, Azure Functions, FastAPI, Dapper, Entity Framework Core</dd>
+  <dt>Frontend</dt>
+  <dd>React 18, Nx monorepo, Fluent UI, Tailwind CSS, Astro</dd>
+  <dt>Cloud / DevOps</dt>
+  <dd>Azure (App Service, Functions, AI Services, Cosmos DB, Service Bus, App Insights), Bicep, GitHub Actions, Docker</dd>
+  <dt>AI / ML</dt>
+  <dd>Azure OpenAI, Model Context Protocol (MCP), LangChain, WhisperKit, RAG, prompt engineering</dd>
+  <dt>Data</dt>
+  <dd>SQL Server, PostgreSQL, Redis, Application Insights (KQL)</dd>
+  <dt>Tools</dt>
+  <dd>Git, VS Code, Azure DevOps, GitHub Copilot, Docker Compose, UniFi networking</dd>
+</dl>
+
+<h2>Work Experience</h2>
+
+<div class="role">
+  <h3 class="role-title">Senior Full Stack Developer</h3>
+  <span class="role-date">Sep 2021 – Present</span>
+</div>
+<div class="company">College of Registered Nurses of Alberta (CRNA) — Edmonton → Vancouver (Remote)</div>
+<ul>
+  <li>Architect and maintain 6+ production web applications (React + .NET) serving regulatory operations for 50,000+ nurses.</li>
+  <li>Built Azure AI Document Intelligence pipeline that automated document classification, reducing manual processing by 80%.</li>
+  <li>Designed and shipped Teams tab apps with custom SSO using TeamsFx, MSAL, and Microsoft Graph.</li>
+  <li>Implemented CI/CD across 8 repositories using GitHub Actions, Bicep IaC, and Azure DevOps pipelines.</li>
+  <li>Introduced GitHub Copilot workflows for the dev team — PR reviews, Dependabot, CodeQL, automated announcements.</li>
+  <li>Deployed Application Insights observability (custom events, alerts, queue monitors) reducing incident response from hours to minutes.</li>
+  <li>Developed enterprise SharePoint solutions using PnP Framework and Microsoft Graph APIs.</li>
+</ul>
+
+<div class="role">
+  <h3 class="role-title">Consultant — Software Developer</h3>
+  <span class="role-date">Mar 2019 – Sep 2021</span>
+</div>
+<div class="company">CGI — Alberta Justice, Automated Monitoring System (AMS)</div>
+<ul>
+  <li>Developed and maintained mission-critical ASP.NET MVC application handling justice system workflows.</li>
+  <li>Built Grafana monitoring dashboards that reduced system downtime by 40%.</li>
+  <li>Delivered SSRS data reports and resolved complex data-layer issues for court case management.</li>
+  <li>Collaborated in agile sprints across cross-functional teams (devs, BAs, architects, product owners).</li>
+</ul>
+
+<div class="role">
+  <h3 class="role-title">Application Analyst</h3>
+  <span class="role-date">Nov 2014 – Mar 2019</span>
+</div>
+<div class="company">Alcanna Inc. — Edmonton, AB</div>
+<ul>
+  <li>Maintained retail web applications (ASP.NET MVC, Entity Framework, jQuery) supporting 170+ stores.</li>
+  <li>Developed real-time integration services with Web API and T-SQL stored procedures.</li>
+  <li>Managed Microsoft Dynamics Great Plains integrations for inventory and POS systems.</li>
+</ul>
+
+<div class="role">
+  <h3 class="role-title">System Analyst / Application Specialist</h3>
+  <span class="role-date">Jan 2012 – Aug 2014</span>
+</div>
+<div class="company">City of Edmonton — Edmonton, AB</div>
+<ul>
+  <li>Administered enterprise financial systems; provided L2/L3 support for 15,000+ city employees.</li>
+  <li>Developed internal tools using Google Apps Script and JavaScript for workflow automation.</li>
+  <li>Coordinated UAT and QA cycles for enterprise application upgrades.</li>
+</ul>
+
+<h2>Notable Projects (Open Source)</h2>
+<ul class="projects">
+  <li><strong>MCP Servers</strong> — Custom Model Context Protocol servers (Teams, Outlook, WhatsApp, WeChat, Discord, iMessage) enabling AI agents to interact with real communication platforms.</li>
+  <li><strong>Worker Center</strong> — Dockerized Python scheduler running 20+ autonomous workers (scrapers, pollers, AI triage) with a FastAPI dashboard.</li>
+  <li><strong>Neuro-Ming</strong> — Personal AI agent framework with memory, planning, and multi-tool orchestration.</li>
+  <li><strong>MeetMate</strong> — macOS app using WhisperKit for on-device meeting transcription and local LLM summarization.</li>
+</ul>
+
+<h2>Education</h2>
+<ul class="certs">
+  <li><strong>MSc Computer Science</strong> (Multimedia Specialization) — University of Alberta, 2021</li>
+  <li><strong>Bachelor of Technology</strong> (Technology Management) — NAIT, 2017</li>
+  <li><strong>Diploma, Digital Media & IT</strong> (Computer Programming) — NAIT, 2012</li>
+</ul>
+
+<h2>Certifications</h2>
+<ul class="certs">
+  <li>Azure AI Engineer Associate (AI-102) — Microsoft, 2023</li>
+  <li>Azure AI Fundamentals (AI-900) — Microsoft, 2023</li>
+  <li>Deep Learning Specialization — Coursera / deeplearning.ai, 2021</li>
+  <li>Machine Learning — Coursera / Stanford, 2021</li>
+  <li>ITIL Foundation — 2019</li>
+</ul>
+
+</body>
+</html>
