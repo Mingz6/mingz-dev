@@ -1,0 +1,11 @@
+{
+  "responseOverrides": {
+    "404": {
+      "rewrite": "/404.html"
+    }
+  },
+  "navigationFallback": {
+    "rewrite": "/404.html",
+    "exclude": ["/_astro/*", "/favicon.ico", "/robots.txt", "/rss.xml", "/sitemap-index.xml", "/sitemap-0.xml"]
+  }
+}
