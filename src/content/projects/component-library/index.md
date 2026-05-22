@@ -1,6 +1,6 @@
 ---
 title: "React Component Library"
-summary: "Reusable React component library with Storybook — buttons, inputs, navigation tabs, documented and tested."
+summary: "Shared UI component library with Storybook — built as an internal design system inside an Nx monorepo with strict TypeScript and SCSS modules."
 date: "Mar 15 2024"
 draft: false
 tags:
@@ -12,18 +12,22 @@ tags:
 
 <!-- TODO: Migrate from mingz-projects repo into mingz-dev. Add repoUrl back once public. Delete old repo after. Due: June 7, 2026 -->
 
-A shared React component library built inside an Nx monorepo. Components are developed in isolation with Storybook and consumed by the demo site.
+An internal design system built to keep UI consistent across multiple apps in an Nx monorepo. Components are developed in isolation with Storybook, versioned, and consumed by a demo app.
+
+## Why
+
+Every team project I touched had slightly different buttons, inputs, and layout patterns. This library extracted the common pieces into one source of truth — change it once, propagate everywhere.
 
 ## Components
 
-- Buttons (primary, secondary, icon variants)
-- Input fields with validation
-- Navigation tabs
-- Layout primitives
+- **Buttons** — primary, secondary, icon-only, loading state variants
+- **Form inputs** — text, select, textarea with built-in validation and error display
+- **Navigation tabs** — accessible keyboard navigation, active state indicators
+- **Layout primitives** — stack, cluster, sidebar patterns
 
 ## Tech
 
-- React 18 + TypeScript
-- Storybook 8 for component documentation
-- Nx workspace for monorepo structure
-- SCSS modules for styling
+- React 18 + strict TypeScript (no `any`)
+- Storybook 8 for interactive documentation and visual regression
+- Nx workspace — build/test caching, affected-only CI
+- SCSS modules with design tokens for consistent spacing and color

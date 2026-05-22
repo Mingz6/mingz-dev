@@ -26,9 +26,14 @@ const projects = (await getCollection("projects"))
 
         <!-- Avatar -->
         <div class="shrink-0 self-center md:self-start">
-          <div class="w-36 h-36 rounded-full bg-gradient-to-br from-accent-1/80 to-accent-3/80 flex items-center justify-center text-white text-4xl font-bold select-none">
-            MZ
-          </div>
+          <img
+            src="https://github.com/Mingz6.png"
+            alt="MingZ"
+            width="144"
+            height="144"
+            class="w-36 h-36 rounded-full object-cover"
+            loading="eager"
+          />
         </div>
 
         <!-- Bio -->
@@ -72,7 +77,7 @@ const projects = (await getCollection("projects"))
       <!-- Links -->
       <div class="mt-12 space-y-4">
         <h2 class="text-xl font-semibold text-black dark:text-white">Find me</h2>
-        <div class="flex flex-wrap gap-4">
+        <div class="flex gap-4">
           {SOCIALS.map(social => (
             <a
               href={social.HREF}
@@ -84,61 +89,6 @@ const projects = (await getCollection("projects"))
               <span class="opacity-50">@{social.TEXT}</span>
             </a>
           ))}
-          <a
-            href="/resume/m1ngz-2026"
-            class="flex items-center gap-2 px-4 py-2 rounded-full border border-accent-1/30 dark:border-accent-1/40 hover:bg-accent-1/5 hover:dark:bg-accent-1/10 text-black dark:text-white blend"
-          >
-            <span>Resume</span>
-          </a>
-        </div>
-      </div>
-
-      <!-- Certifications -->
-      <div class="mt-12 space-y-4">
-        <h2 class="text-xl font-semibold text-black dark:text-white">Certifications</h2>
-        <div class="flex flex-wrap gap-8 items-center">
-          <!-- AI-102: Azure AI Engineer Associate -->
-          <div class="flex flex-col items-center gap-2 group">
-            <div class="w-20 h-20 rounded-xl bg-gradient-to-br from-[#0078d4]/10 to-[#50e6ff]/10 dark:from-[#0078d4]/20 dark:to-[#50e6ff]/20 border border-[#0078d4]/20 flex items-center justify-center transition-transform group-hover:scale-105">
-              <svg class="w-10 h-10" viewBox="0 0 48 48" fill="none">
-                <rect x="4" y="8" width="40" height="32" rx="4" fill="#0078d4"/>
-                <text x="24" y="22" text-anchor="middle" font-size="7" font-weight="bold" fill="white" font-family="system-ui">AZURE AI</text>
-                <text x="24" y="32" text-anchor="middle" font-size="5.5" fill="#50e6ff" font-family="system-ui">ENGINEER</text>
-                <polygon points="24,36 22,39 26,39" fill="#ffd700"/>
-              </svg>
-            </div>
-            <span class="text-xs text-center text-black/70 dark:text-white/70 max-w-[5rem] leading-tight">AI Engineer Associate</span>
-          </div>
-
-          <!-- AI-900: Azure AI Fundamentals -->
-          <div class="flex flex-col items-center gap-2 group">
-            <div class="w-20 h-20 rounded-xl bg-gradient-to-br from-[#0078d4]/10 to-[#50e6ff]/10 dark:from-[#0078d4]/20 dark:to-[#50e6ff]/20 border border-[#0078d4]/20 flex items-center justify-center transition-transform group-hover:scale-105">
-              <svg class="w-10 h-10" viewBox="0 0 48 48" fill="none">
-                <rect x="4" y="8" width="40" height="32" rx="4" fill="#0078d4"/>
-                <text x="24" y="22" text-anchor="middle" font-size="7" font-weight="bold" fill="white" font-family="system-ui">AZURE AI</text>
-                <text x="24" y="32" text-anchor="middle" font-size="5" fill="#50e6ff" font-family="system-ui">FUNDAMENTALS</text>
-                <circle cx="24" cy="37" r="2" fill="#50e6ff"/>
-              </svg>
-            </div>
-            <span class="text-xs text-center text-black/70 dark:text-white/70 max-w-[5rem] leading-tight">AI Fundamentals</span>
-          </div>
-
-          <!-- Deep Learning Specialization -->
-          <div class="flex flex-col items-center gap-2 group">
-            <div class="w-20 h-20 rounded-xl bg-gradient-to-br from-[#f56565]/10 to-[#ed8936]/10 dark:from-[#f56565]/20 dark:to-[#ed8936]/20 border border-[#f56565]/20 flex items-center justify-center transition-transform group-hover:scale-105">
-              <svg class="w-10 h-10" viewBox="0 0 48 48" fill="none">
-                <rect x="4" y="8" width="40" height="32" rx="4" fill="#1a1a2e"/>
-                <circle cx="18" cy="22" r="3" fill="#f56565"/>
-                <circle cx="30" cy="22" r="3" fill="#ed8936"/>
-                <circle cx="24" cy="30" r="3" fill="#f6e05e"/>
-                <line x1="18" y1="22" x2="30" y2="22" stroke="#f56565" stroke-width="0.8"/>
-                <line x1="18" y1="22" x2="24" y2="30" stroke="#ed8936" stroke-width="0.8"/>
-                <line x1="30" y1="22" x2="24" y2="30" stroke="#f6e05e" stroke-width="0.8"/>
-                <text x="24" y="39" text-anchor="middle" font-size="4" fill="#f56565" font-family="system-ui">deeplearning.ai</text>
-              </svg>
-            </div>
-            <span class="text-xs text-center text-black/70 dark:text-white/70 max-w-[5rem] leading-tight">Deep Learning Specialization</span>
-          </div>
         </div>
       </div>
 

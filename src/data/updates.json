@@ -1,5 +1,10 @@
 [
   {
+    "date": "2026-05-21",
+    "text": "Portfolio polish — real avatar, Clarity analytics, dynamic footer year, new blog post on local AI with WhisperKit + MLX.",
+    "tags": ["astro", "web", "ai"]
+  },
+  {
     "date": "2026-05-19",
     "text": "Code review + cleanup pass on mingz.dev — updated About bio, fixed preview script, added featured projects, freshened build log.",
     "tags": ["astro", "web"]

@@ -15,7 +15,7 @@ function formatBotText(text: string): string {
     .trim()
 }
 
-const API_URL = import.meta.env.PUBLIC_CHAT_API_URL || "http://localhost:8000"
+const API_URL = import.meta.env.PUBLIC_CHAT_API_URL || ""
 const STORAGE_KEYS = {
   session: "neuro-ming-session",
   messages: "neuro-ming-messages",
@@ -32,6 +32,8 @@ function getSessionId(): string {
 }
 
 export default function ChatWidget() {
+  if (!API_URL) return null
+
   const [open, setOpen] = createSignal(false)
   const [maximized, setMaximized] = createSignal(false)
   const [messages, setMessages] = createSignal<Message[]>([])
