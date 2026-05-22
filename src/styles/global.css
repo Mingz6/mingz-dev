@@ -339,14 +339,15 @@ article img:hover {
 
 /* Print styles for resume page */
 @media print {
-  header, footer, nav, .print\:hidden { display: none !important; }
+  #header, #drawer, footer, nav, .print\:hidden { display: none !important; }
+  [class*="fixed"] { position: static !important; display: none !important; }
   .pt-36, .pt-24, .pt-20 { padding-top: 0 !important; }
   .pb-16, .pb-12, .pb-8 { padding-bottom: 0 !important; }
   .mb-8 { margin-bottom: 0.4rem !important; }
   .space-y-6 > * + * { margin-top: 0.4rem !important; }
   .space-y-3 > * + * { margin-top: 0.15rem !important; }
   .animate { animation: none !important; opacity: 1 !important; }
-  body { color: black !important; background: white !important; }
+  body { color: black !important; background: white !important; margin: 0 !important; padding: 0 !important; }
   * { color: black !important; border-color: #ddd !important; }
   a { text-decoration: underline !important; }
   main { padding: 0 !important; margin: 0 !important; }
