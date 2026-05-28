@@ -41,7 +41,7 @@
   },
   {
     "date": "2026-04-02",
-    "text": "Neuro-Ming milestone 1 — chatbot with personality module, Flask web UI, conversation memory, text-to-speech. Pushed to GitHub.",
+    "text": "Neuro-Ming milestone 1 — chatbot with personality module, FastAPI web UI, conversation memory, text-to-speech. Pushed to GitHub.",
     "tags": ["ai", "python"]
   },
   {

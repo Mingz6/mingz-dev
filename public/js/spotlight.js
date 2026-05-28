@@ -2,17 +2,20 @@
 (function () {
   if (!document.body) return;
 
-  const spotlight = document.createElement("div");
-  spotlight.id = "spotlight";
-  spotlight.style.cssText = `
-    position: fixed;
-    inset: 0;
-    z-index: 1;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.3s ease;
-  `;
-  document.body.appendChild(spotlight);
+  let spotlight = document.getElementById("spotlight");
+  if (!spotlight) {
+    spotlight = document.createElement("div");
+    spotlight.id = "spotlight";
+    spotlight.style.cssText = `
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.3s ease;
+    `;
+    document.body.appendChild(spotlight);
+  }
 
   let x = 0, y = 0;
   let visible = false;

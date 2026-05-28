@@ -18,7 +18,7 @@ A self-hosted deal hunting system that scrapes secondhand marketplaces for Mac M
 - **Scrapes 5 sources** every 15 minutes: FB Marketplace, Kijiji, eBay sold prices, Apple Refurbished, and WeChat buy/sell groups
 - **Classifies listings** by SKU (M4 Base, M4 Pro 12-core, M4 Pro 14-core) and extracts specs from messy seller text
 - **Scores every deal** 0–100 based on price vs eBay sold data, seller reputation tier, listing freshness, and spec completeness
-- **LLM triage** — when a deal hits the sniper threshold, GPT-5.2 evaluates it as BUY / WATCH / TYPO / SCAM before alerting
+- **LLM triage** — when a deal hits the sniper threshold, GPT-5.4 evaluates it as BUY / WATCH / TYPO / SCAM before alerting
 - **iMessage alerts** land on my phone with the listing link, price context, and the LLM's reasoning
 - **Live dashboard** with a chat widget — I can ask "what are the best deals right now?" and get real answers from the data
 
@@ -33,6 +33,6 @@ The tricky part: iMessage can only be sent via macOS AppleScript, but Docker run
 - **Runtime**: Python 3.12, Docker Compose
 - **Scraping**: Playwright (FB Marketplace), httpx + BeautifulSoup (Kijiji, eBay, Apple), sqlcipher (WeChat)
 - **Data**: SQLite with WAL mode, JSON state files
-- **LLM**: Azure OpenAI GPT-5.2 for deal triage + daily market digest + chat
+- **LLM**: Azure OpenAI GPT-5.4 for deal triage + daily market digest + chat
 - **Dashboard**: FastAPI + server-sent events for streaming chat
 - **Alerts**: iMessage via macOS AppleScript relay, ntfy.sh as fallback
