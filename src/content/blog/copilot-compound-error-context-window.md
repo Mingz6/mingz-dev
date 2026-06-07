@@ -1,6 +1,6 @@
 ---
 title: "The math behind why Copilot agents fail silently"
-summary: "Two numbers most devs skip: 95% per-step accuracy → 8% success over 50 steps. Context at 50% → loss-in-the-middle. Knowing these changes how you build prompts, agents, and guardrails."
+summary: "Two numbers most devs skip: 95% per-step accuracy → 8% success over 50 steps. Context at 50% → loss-in-the-middle. Notes from GitHub Copilot Dev Days Vancouver #2."
 date: "Jun 7 2026"
 tags:
 - AI
@@ -10,7 +10,9 @@ tags:
 draft: false
 ---
 
-Ve Sharma opened his session at GitHub Copilot Dev Days Vancouver with a question nobody in the room had a clean answer to: "You're getting 95% accuracy on every step of your agent — what's your success rate after 50 steps?"
+![GitHub Copilot Dev Days Vancouver — Microsoft Waterfront, June 4 2026](/images/blog/copilot-dev-days-2026/event-signage.jpeg)
+
+Last Thursday I was at GitHub Copilot Dev Days Vancouver #2 at the Microsoft Waterfront office. Two talks in particular had numbers I hadn't seen spelled out clearly before. Ve Sharma (Copilot engineering) opened with a question nobody in the room had a clean answer to: "You're getting 95% accuracy on every step of your agent — what's your success rate after 50 steps?"
 
 The room guessed high. The answer is **8%**.
 
@@ -23,6 +25,41 @@ That number comes from compounding. If each step of a multi-step agent task succ
 | 99.9% | 99% | 97.5% | **95%** |
 
 The engineering implication: every agentic pipeline is a probability product. A dozen tools, a few retries, some file reads — you're already at 20+ steps. At 95% per-step reliability, you've burned through most of your success budget before writing a single line of output.
+
+GitHub's full agentic SDLC loop makes this visceral. They showed this diagram:
+
+<div style="border-radius:8px;overflow:hidden;border:1px solid #d0d7de;margin:1.5rem 0;overflow-x:auto;">
+  <div style="background:#0969da;color:#fff;text-align:center;padding:0.45rem 1rem;font-size:0.7rem;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;">
+    Policy &amp; Governance — Mission Control ↻
+  </div>
+  <div style="display:grid;grid-template-columns:repeat(5,1fr);min-width:560px;">
+    <div style="padding:0.45rem 0.6rem;background:#f6f8fa;font-weight:700;color:#0969da;border-right:1px solid #d0d7de;border-bottom:1px solid #d0d7de;text-align:center;font-size:0.78rem;">① Plan</div>
+    <div style="padding:0.45rem 0.6rem;background:#f6f8fa;font-weight:700;color:#0969da;border-right:1px solid #d0d7de;border-bottom:1px solid #d0d7de;text-align:center;font-size:0.78rem;">② Code</div>
+    <div style="padding:0.45rem 0.6rem;background:#f6f8fa;font-weight:700;color:#0969da;border-right:1px solid #d0d7de;border-bottom:1px solid #d0d7de;text-align:center;font-size:0.78rem;">③ Review</div>
+    <div style="padding:0.45rem 0.6rem;background:#f6f8fa;font-weight:700;color:#0969da;border-right:1px solid #d0d7de;border-bottom:1px solid #d0d7de;text-align:center;font-size:0.78rem;">④ Test &amp; Secure</div>
+    <div style="padding:0.45rem 0.6rem;background:#f6f8fa;font-weight:700;color:#0969da;border-bottom:1px solid #d0d7de;text-align:center;font-size:0.78rem;">⑤ Operate</div>
+    <div style="padding:0.7rem 0.6rem;border-right:1px solid #d0d7de;font-size:0.82rem;line-height:1.8;">
+      Brainstorming Agent<br>Issues<br>Planning Agent<br>Spaces
+    </div>
+    <div style="padding:0.7rem 0.6rem;border-right:1px solid #d0d7de;font-size:0.82rem;line-height:1.8;">
+      Agent Mode<br>Coding Agent<br>Loops<br>Spark Workbench
+    </div>
+    <div style="padding:0.7rem 0.6rem;border-right:1px solid #d0d7de;font-size:0.82rem;line-height:1.8;">
+      Coding Agent<br>Coding Review<br>Playwright<br>Pull Requests
+    </div>
+    <div style="padding:0.7rem 0.6rem;border-right:1px solid #d0d7de;font-size:0.82rem;line-height:1.8;">
+      Actions<br>Autofix<br>Code Quality<br>Spark Runtime
+    </div>
+    <div style="padding:0.7rem 0.6rem;font-size:0.82rem;line-height:1.8;">
+      Metrics<br>Models<br>Spark Runtime<br>SRE Agent
+    </div>
+  </div>
+  <div style="background:#f6f8fa;padding:0.4rem 1rem;font-size:0.72rem;color:#666;text-align:center;border-top:1px solid #d0d7de;">
+    3rd-party agents &nbsp;·&nbsp; Custom Agents &nbsp;·&nbsp; AI Controls &nbsp;·&nbsp; Copilot CLI &nbsp;·&nbsp; Integrations &amp; MCP
+  </div>
+</div>
+
+Five phases, each with its own agents. A real task touches Planning Agent → Coding Agent → Coding Review → Autofix → SRE Agent, plus tool calls at each step. The 50-step number in the compound error math isn't hypothetical — it's conservative.
 
 ## Why context windows make this worse
 
