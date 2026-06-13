@@ -1,62 +1,107 @@
 [
   {
+    "date": "2026-06-12",
+    "text": "Ship-log skill + GitHub profile auto-sync — say \"what did I ship this week\" and Copilot drafts your build log entries, commits them, and updates the profile README automatically.",
+    "tags": [
+      "ai",
+      "astro"
+    ]
+  },
+  {
     "date": "2026-05-21",
     "text": "Portfolio polish — real avatar, Clarity analytics, dynamic footer year, new blog post on local AI with WhisperKit + MLX.",
-    "tags": ["astro", "web", "ai"]
+    "tags": [
+      "astro",
+      "web",
+      "ai"
+    ]
   },
   {
     "date": "2026-05-19",
     "text": "Code review + cleanup pass on mingz.dev — updated About bio, fixed preview script, added featured projects, freshened build log.",
-    "tags": ["astro", "web"]
+    "tags": [
+      "astro",
+      "web"
+    ]
   },
   {
     "date": "2026-05-12",
     "text": "Worker-center v2 — modular architecture with Ming HQ orchestrator, 5 marketplace scrapers running every 15 min.",
-    "tags": ["python", "ai"]
+    "tags": [
+      "python",
+      "ai"
+    ]
   },
   {
     "date": "2026-05-05",
     "text": "JobClaw hit 200+ daily postings across 20 sources. Added LLM scoring and auto-apply pipeline.",
-    "tags": ["python", "ai"]
+    "tags": [
+      "python",
+      "ai"
+    ]
   },
   {
     "date": "2026-04-20",
     "text": "MeetMate — Swift app for live meeting transcription with on-device Whisper + MLX summarization.",
-    "tags": ["swift", "ai"]
+    "tags": [
+      "swift",
+      "ai"
+    ]
   },
   {
     "date": "2026-04-08",
     "text": "Added About page to the portfolio. Casual bio, MZ placeholder avatar, \"currently building\" section with linked project cards.",
-    "tags": ["astro", "web"]
+    "tags": [
+      "astro",
+      "web"
+    ]
   },
   {
     "date": "2026-04-07",
     "text": "Published pr-reviewer-daemon as a project on mingz.dev. Ran a security audit first — caught org references in config files, stripped repoUrl.",
-    "tags": ["ai", "typescript"]
+    "tags": [
+      "ai",
+      "typescript"
+    ]
   },
   {
     "date": "2026-04-06",
     "text": "Rebuilt the entire portfolio from React SPA to Astro. Static HTML, content collections, Tailwind dark mode. 100/100 Lighthouse.",
-    "tags": ["astro", "web"]
+    "tags": [
+      "astro",
+      "web"
+    ]
   },
   {
     "date": "2026-04-02",
     "text": "Neuro-Ming milestone 1 — chatbot with personality module, FastAPI web UI, conversation memory, text-to-speech. Pushed to GitHub.",
-    "tags": ["ai", "python"]
+    "tags": [
+      "ai",
+      "python"
+    ]
   },
   {
     "date": "2026-04-01",
     "text": "Built an MCP server that reads Microsoft Teams chat via Graph API. MSAL token refresh was the tricky part.",
-    "tags": ["typescript", "bot"]
+    "tags": [
+      "typescript",
+      "bot"
+    ]
   },
   {
     "date": "2026-03-15",
     "text": "Set up GPON ONT bypass at Selma property — WAS-110 XGS-PON stick replacing the Telus ONT. 10G symmetric on UniFi.",
-    "tags": ["networking", "ubiquiti"]
+    "tags": [
+      "networking",
+      "ubiquiti"
+    ]
   },
   {
     "date": "2026-02-20",
     "text": "Deployed VamAi workshop materials — Jupyter notebooks covering computer vision, NLP, and model training.",
-    "tags": ["ai", "python"]
+    "tags": [
+      "ai",
+      "python"
+    ]
   }
 ]
