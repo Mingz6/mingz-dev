@@ -1,0 +1,87 @@
+name: Sync Build Log to GitHub Profile
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - 'src/data/updates.json'
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+
+    steps:
+      - name: Checkout mingz-dev
+        uses: actions/checkout@v4
+
+      - name: Generate build log markdown
+        id: buildlog
+        run: |
+          # Read top 5 entries from updates.json and render as markdown list
+          python3 - <<'EOF'
+          import json, os
+
+          with open('src/data/updates.json') as f:
+              entries = json.load(f)
+
+          lines = []
+          for entry in entries[:5]:
+              date = entry.get('date', '')
+              text = entry.get('text', '')
+              tags = entry.get('tags', [])
+              tag_str = ' '.join(f'`{t}`' for t in tags)
+              lines.append(f'- **{date}** — {text} {tag_str}')
+
+          output = '\n'.join(lines)
+          # Write to file for next step (avoids multiline env var issues)
+          with open('/tmp/buildlog.md', 'w') as f:
+              f.write(output)
+
+          print("Generated entries:")
+          print(output)
+          EOF
+
+      - name: Update profile README
+        env:
+          GH_TOKEN: ${{ secrets.PROFILE_README_TOKEN }}
+        run: |
+          # Clone the profile repo
+          git clone https://x-access-token:${GH_TOKEN}@github.com/Mingz6/Mingz6.git /tmp/profile-repo
+          cd /tmp/profile-repo
+
+          BUILDLOG=$(cat /tmp/buildlog.md)
+
+          # Replace content between the placeholder markers
+          python3 - <<'PYEOF'
+          import re
+
+          with open('README.md', 'r') as f:
+              content = f.read()
+
+          buildlog = open('/tmp/buildlog.md').read()
+          new_section = (
+              "<!-- BUILDLOG_START -->\n" +
+              buildlog +
+              "\n\n*Auto-updated from [mingz.dev](https://mingz.dev). Full log at [mingz.dev/#log](https://mingz.dev/#log).*\n" +
+              "<!-- BUILDLOG_END -->"
+          )
+
+          updated = re.sub(
+              r'<!-- BUILDLOG_START -->.*?<!-- BUILDLOG_END -->',
+              new_section,
+              content,
+              flags=re.DOTALL
+          )
+
+          with open('README.md', 'w') as f:
+              f.write(updated)
+          PYEOF
+
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add README.md
+          git diff --cached --quiet && echo "No changes" && exit 0
+          git commit -m "build log: auto-sync from mingz.dev"
+          git push
