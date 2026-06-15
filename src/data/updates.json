@@ -1,5 +1,13 @@
 [
   {
+    "date": "2026-06-15",
+    "text": "PriceClaw — agentic deal hunter that scrapes 5 secondhand marketplaces, scores listings with LLM triage (BUY / APPROACHING / WATCH / TYPO / SCAM), and sends iMessage alerts when something is worth buying.",
+    "tags": [
+      "python",
+      "ai"
+    ]
+  },
+  {
     "date": "2026-06-12",
     "text": "Ship-log skill + GitHub profile auto-sync — say \"what did I ship this week\" and Copilot drafts your build log entries, commits them, and updates the profile README automatically.",
     "tags": [
