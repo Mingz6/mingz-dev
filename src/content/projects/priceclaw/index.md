@@ -13,6 +13,8 @@ tags:
 
 I hate manually refreshing marketplaces looking for a deal on used hardware. So I built PriceClaw: an agentic deal hunter that watches 5 secondhand platforms every 15 minutes and only alerts me when something is genuinely worth buying.
 
+![Vancouver AI Meetup — May 2026](./vamai-group.png)
+
 ## What it does
 
 **Scrapes 5 sources every 15 minutes:** FB Marketplace, Kijiji, eBay sold prices, Apple Refurbished, and WeChat buy/sell groups. Each listing gets parsed, SKU-classified by RAM/storage config, and stored in SQLite.
@@ -43,6 +45,8 @@ Only BUY and TYPO trigger a notification. "TYPO" is my favourite — listings at
 ## Demoed at Vancouver AI Meetup
 
 Presented PriceClaw at [Vancouver AI Meetup (VAM!)](https://vanaimeetup.com/) in May 2026 as part of the Agentic Personal Assistants workshop. Walked away with a certificate.
+
+![Certificate of Completion — Agentic Personal Assistants, VamAI 2026](./certificate.png)
 
 ## Tech Stack
 
