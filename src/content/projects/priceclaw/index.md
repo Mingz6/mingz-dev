@@ -1,6 +1,6 @@
 ---
 title: "PriceClaw"
-summary: "Agentic deal hunter that scrapes 5 secondhand marketplaces, scores every listing with LLM triage, and texts you when something is genuinely worth buying."
+summary: "Agentic deal hunter that scrapes multiple marketplaces, scores every listing with LLM triage, and texts you when something is genuinely worth buying."
 date: "Jun 15 2026"
 draft: false
 tags:
@@ -11,13 +11,13 @@ tags:
 - Web Scraping
 ---
 
-I hate manually refreshing marketplaces looking for a deal on used hardware. So I built PriceClaw: an agentic deal hunter that watches 5 secondhand platforms every 15 minutes and only alerts me when something is genuinely worth buying.
+I hate manually refreshing marketplaces looking for a deal on used hardware. So I built PriceClaw: an agentic deal hunter that watches multiple platforms every 15 minutes and only alerts me when something is genuinely worth buying.
 
 ![Vancouver AI Meetup — May 2026](./vamai-group.png)
 
 ## What it does
 
-**Scrapes 5 sources every 15 minutes:** FB Marketplace, Kijiji, eBay sold prices, Apple Refurbished, and WeChat buy/sell groups. Each listing gets parsed, SKU-classified by RAM/storage config, and stored in SQLite.
+**Scrapes 5 sources every 15 minutes:** Amazon, Apple Refurbished, FB Marketplace, Kijiji, eBay sold prices, and Groupchat buy/sell groups. Each listing gets parsed, SKU-classified by RAM/storage config, and stored in SQLite.
 
 **Scores every listing** against a retail price matrix by config. The scorer calculates the actual discount percentage for the exact spec combination — not just "is this cheap" but "is this cheap for what it is."
 
