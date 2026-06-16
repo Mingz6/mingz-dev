@@ -1,6 +1,14 @@
 [
   {
     "date": "2026-06-15",
+    "text": "Renewed Microsoft Certified: Azure AI Engineer Associate (AI-102) — 88% on the renewal assessment. Valid until Dec 2027.",
+    "tags": [
+      "ai",
+      "azure"
+    ]
+  },
+  {
+    "date": "2026-06-15",
     "text": "PriceClaw — agentic deal hunter that scrapes 5 secondhand marketplaces, scores listings with LLM triage (BUY / APPROACHING / WATCH / TYPO / SCAM), and sends iMessage alerts when something is worth buying.",
     "tags": [
       "python",
