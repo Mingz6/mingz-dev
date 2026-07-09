@@ -103,5 +103,12 @@
       <path d="M 6 5 v 13"/>
       <path d="M 3 8 l 3 -3 l 3 3"/>
     </symbol>
+
+    <!-- download -->
+    <symbol id="download" fill="none" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" viewBox="0 0 24 24">
+      <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4"/>
+      <polyline points="7 10 12 15 17 10"/>
+      <line x1="12" y1="15" x2="12" y2="3"/>
+    </symbol>
   </defs>
 </svg>

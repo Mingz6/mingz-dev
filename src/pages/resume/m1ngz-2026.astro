@@ -37,7 +37,10 @@ import { SOCIALS } from "@consts"
                 mingz.dev
               </a>
             </div>
-            <button onclick="window.print()" class="print:hidden text-xs px-3 py-1 rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/10 text-black dark:text-white blend cursor-pointer">
+            <button onclick="window.print()" class="print:hidden flex items-center gap-1.5 text-xs px-3 py-1 rounded border border-black/15 dark:border-white/20 hover:bg-black/5 dark:hover:bg-white/10 stroke-current text-black dark:text-white blend cursor-pointer">
+              <svg class="size-3.5">
+                <use href="/ui.svg#download"></use>
+              </svg>
               Save as PDF
             </button>
           </div>
