@@ -62,7 +62,8 @@
       "astro",
       "web",
       "ai"
-    ]
+    ],
+    "blogSlug": "local-ai-macos-whisperkit-mlx"
   },
   {
     "date": "2026-05-19",
@@ -118,7 +119,8 @@
     "tags": [
       "astro",
       "web"
-    ]
+    ],
+    "blogSlug": "why-astro"
   },
   {
     "date": "2026-04-02",
@@ -134,7 +136,8 @@
     "tags": [
       "typescript",
       "bot"
-    ]
+    ],
+    "blogSlug": "mcp-teams-chat"
   },
   {
     "date": "2026-03-15",
@@ -142,7 +145,8 @@
     "tags": [
       "networking",
       "ubiquiti"
-    ]
+    ],
+    "blogSlug": "gpon-ont-bypass"
   },
   {
     "date": "2026-02-20",
