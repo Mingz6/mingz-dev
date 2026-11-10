@@ -8,7 +8,6 @@ tags:
 - AI
 - Machine Learning
 - Jupyter
-repoUrl: https://github.com/Mingz6/VamAi
 ---
 
 Vancouver AI Meetup is a weekly learning group. I've been coming here to stay sharp on the AI tooling side — hands-on builds, not just lectures.
