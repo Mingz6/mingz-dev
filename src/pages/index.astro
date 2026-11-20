@@ -17,6 +17,14 @@ const projects = (await getCollection("projects"))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0,3)
 
+// Fail the build when a build-log entry points at a blog post that doesn't exist.
+const blogSlugs = new Set<string>((await getCollection("blog")).map(post => post.slug))
+for (const update of updates) {
+  if (update.blogSlug && !blogSlugs.has(update.blogSlug)) {
+    throw new Error(`updates.json: blogSlug "${update.blogSlug}" (${update.date}) has no matching blog post`)
+  }
+}
+
 const recentUpdates = updates
   .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime())
   .slice(0, 5)
@@ -154,7 +162,17 @@ const recentUpdates = updates
                   {new Date(update.date + 'T00:00:00').toLocaleDateString('en-US', { month: 'short', day: 'numeric' })}
                 </div>
                 <div class="flex-1">
-                  <p class="text-sm">{update.text}</p>
+                  <p class="text-sm">
+                    {update.text}
+                    {update.blogSlug && (
+                      <>
+                        {" "}
+                        <a href={`/blog/${update.blogSlug}`} class="text-accent-1 dark:text-accent-2 whitespace-nowrap hover:underline">
+                          &rarr; full writeup
+                        </a>
+                      </>
+                    )}
+                  </p>
                   <div class="flex gap-1 mt-1">
                     {update.tags.map((tag: string) => (
                       <span class="text-xs px-2 py-0.5 rounded-full bg-accent-1/10 dark:bg-accent-2/20 text-accent-1 dark:text-accent-2">
